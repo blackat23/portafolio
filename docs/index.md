@@ -1,14 +1,27 @@
 # Portafolio de Antonio Martínez
+Martínez
 
-Bienvenido 👋  
-Esta es una **plantilla** basada en [MkDocs](https://www.mkdocs.org/) + [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) para cursos y proyectos.
+¡Bienvenido!   
+Este portafolio recopila proyectos, notas de clase y tutoriales relacionados con **microcontroladores, sistemas embebidos e inteligencia artificial**.
+
+En el menú lateral encontrarás:  
+- Proyectos destacados    
+- Tutoriales prácticos paso a paso  
+- Referencias y enlaces útiles
 
 ---
 
-## Empezar rápido (3 pasos)
+# Sobre mí
 
-1. **Edita el nombre del sitio** en `mkdocs.yml`:
-   ```yaml
-   site_name: Documentación del Curso
-   theme:
-     name: material
+Soy estudiante de **Ingeniería Mecatrónica** interesado en:  
+- Microcontroladores y sistemas embebidos  
+- Inteligencia artificial aplicada (visión por computadora, ciberseguridad)  
+- Desarrollo de software y hardware para IoT  
+
+**Habilidades técnicas:**  
+- Programación: C/C++, Python, JavaScript  
+- Electrónica: diseño de circuitos, sensores, actuadores  
+- Herramientas: Git, AWS, SolidWorks, Arduino IDE, CATIA V5R21  
+
+**Objetivos profesionales:**  
+Seguir desarrollando proyectos que combinen IA y sistemas embebidos, y eventualmente escalar mi startup tecnológica.

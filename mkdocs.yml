@@ -1,4 +1,4 @@
-site_name: Plantilla para Documentación
+site_name: Portafolio de Antonio Martínez
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
@@ -29,7 +29,7 @@ theme:
   highlightjs: true 
   palette:
       - scheme: default
-        primary: red
+        primary: black
 
   features:
     - content.code.copy
@@ -43,3 +43,4 @@ nav:
   - Ejemplo: ejemplo.md
   - Comandos Basicos: comandos.md
   - git: gitcmds.md
+  - microcontroladores: controladores.md

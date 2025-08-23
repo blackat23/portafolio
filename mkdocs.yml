@@ -40,7 +40,7 @@ extra_css:
 
 nav:
   - Home: index.md
-  - Ejemplo: ejemplo.md
-  - Comandos Basicos: comandos.md
-  - git: gitcmds.md
+  #- Ejemplo: ejemplo.md
+  #- Comandos Basicos: comandos.md
+  #- git: gitcmds.md
   - microcontroladores: controladores.md

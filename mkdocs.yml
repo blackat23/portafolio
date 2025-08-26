@@ -46,5 +46,6 @@ nav:
   - microcontroladores: controladores.md
   - Raspberry Pi Pico 2:
       -Contador Binario de 4 Bits : practicas/sumador.md
+      -Barrido de LEDs : practicas/barrido.md
 
       

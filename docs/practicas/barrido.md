@@ -52,6 +52,7 @@ La siguiente imagen muestra las conexiones realizadas, se utilizaron 5 resistenc
 
 ![Raspberry Pi Pico 2](../recursos/imgs/barrido.png)  
 
+<img src="../recursos/imgs/ibero.jpeg" alt="Raspberry conectada" width="250">  
 
 ---
 

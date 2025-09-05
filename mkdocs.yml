@@ -44,6 +44,7 @@ nav:
   #- Comandos Basicos: comandos.md
   #- git: gitcmds.md
   - microcontroladores: controladores.md
+  - Proyecto rana: rana.md
   - Raspberry Pi Pico 2:
       -Contador Binario de 4 Bits : practicas/sumador.md
       -Barrido de LEDs : practicas/barrido.md

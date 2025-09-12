@@ -45,6 +45,7 @@ nav:
   #- git: gitcmds.md
   - microcontroladores: controladores.md
   - Proyecto rana: rana.md
+  - Análisis sobre las cafeteras de cápsulas: analisis_cafeteras.md
   - Raspberry Pi Pico 2:
       -Contador Binario de 4 Bits : practicas/sumador.md
       -Barrido de LEDs : practicas/barrido.md

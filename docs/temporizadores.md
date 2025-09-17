@@ -1,22 +1,24 @@
-# Parpadeo de 4 LEDs con múltiples alarmas del **System Timer** (RP2350 / Pico 2)
+<!-- docs/rp2350/leds-alarms.md -->
+# Parpadeo de 4 LEDs con **System Timer** (RP2350 / Pico 2)
 
-> **TL;DR:** Este programa usa las 4 *hardware alarms* del temporizador de sistema para hacer parpadear 4 LEDs de manera independiente, programando cada próximo “deadline” en microsegundos dentro de sus rutinas de interrupción (ISRs). Es un enfoque sin bloqueo: todo el parpadeo ocurre en las ISRs; el `while(true)` queda libre.
+!!! tip "Resumen"
+    Este programa usa las 4 *hardware alarms* del temporizador de sistema para hacer parpadear 4 LEDs de manera independiente, programando cada próximo “deadline” en microsegundos dentro de cada ISR (*interrupt service routine*). Es un enfoque sin bloqueo: todo el parpadeo ocurre en las ISRs; el `while(true)` queda libre.
 
 ---
 
 ## Objetivo
 
 - Controlar **4 LEDs** con periodos distintos usando **ALARM0..ALARM3** del periférico `timer`.
-- Trabajar en **microsegundos** usando el **timebase a 1 MHz**.
-- Mantener precisión temporal reprogramando el *siguiente* instante de disparo **relativo** (sumando el intervalo al último `deadline`), evitando *drift* por latencias.
+- Trabajar en **microsegundos** (timebase de 1 MHz).
+- Mantener precisión temporal reprogramando el siguiente disparo desde el *deadline* previo (**evita drift**).
 
 ---
 
 ## Plataforma y dependencias
 
 - **MCU:** RP2350 (Raspberry Pi Pico 2)  
-- **SDK:** Raspberry Pi Pico SDK (headers: `pico/stdlib.h`, `hardware/irq.h`, `hardware/structs/timer.h`, `hardware/gpio.h`)
-- **Build:** CMake + GCC (estándar del SDK)
+- **SDK:** Raspberry Pi Pico SDK  
+- **Headers:** `pico/stdlib.h`, `hardware/irq.h`, `hardware/structs/timer.h`, `hardware/gpio.h`
 
 ---
 
@@ -33,7 +35,7 @@
 | ALARM2 | `ALARM2_NUM = 2` | IRQ `ALARM2_IRQ` → `on_alarm2_irq()` |
 | ALARM3 | `ALARM3_NUM = 3` | IRQ `ALARM3_IRQ` → `on_alarm3_irq()` |
 
-> **Nota:** En el comentario de `LED1_PIN` aparece “GPIO 0”, pero el `#define` es **13**. Ajusta el comentario o el valor para que coincidan.
+> Nota: Asegura que los comentarios de pines coinciden con los `#define` usados.
 
 ---
 
@@ -43,33 +45,22 @@ Los intervalos están en **µs**:
 
 - `INTERVALO0_US = 250000` → 0.25 s → **4 Hz**
 - `INTERVALO1_US = 500000` → 0.50 s → **2 Hz**
-- `INTERVALO2_US = 750000` → 0.75 s → **1.33̅ Hz**
+- `INTERVALO2_US = 750000` → 0.75 s → **1.33 Hz**
 - `INTERVALO3_US = 1000000` → 1.00 s → **1 Hz**
 
-Cambia estos `#define` para ajustar la velocidad de cada LED de forma independiente.
+Cambia estas constantes para ajustar la velocidad de cada LED.
 
 ---
 
 ## Flujo de ejecución
 
-1. **Inicialización de GPIOs:**  
-   `gpio_init()`, `gpio_set_dir(..., GPIO_OUT)` y `gpio_put(..., 0)` para cada LED.
-
-2. **Base de tiempo a 1 MHz:**  
-   `timer_hw->source = 0u;` selecciona el *source* por defecto (1 MHz → 1 µs por tick).
-
-3. **Toma de “ahora” y primeros deadlines:**  
-   `now_us = timer_hw->timerawl;` (parte baja a 32 bit).  
-   Se calculan `nextX_us = now_us + INTERVALOX_US` para X = 0..3.
-
-4. **Programación de alarmas:**  
-   Se escribe `timer_hw->alarm[ALARMX_NUM] = nextX_us` para cada alarma.
-
-5. **Registro de handlers e IRQs:**  
-   `irq_set_exclusive_handler(ALARMX_IRQ, on_alarmX_irq);` y `irq_set_enabled(..., true)`.
-
-6. **Bucle principal vacío:**  
-   `tight_loop_contents();` mientras las ISRs manejan todos los toggles.
+1. **Inicialización de GPIOs**: `gpio_init()`, `gpio_set_dir(..., GPIO_OUT)` y `gpio_put(..., 0)` por LED.  
+2. **Base de tiempo**: `timer_hw->source = 0u;` (1 MHz → 1 µs por tick).  
+3. **Captura “ahora”**: `now_us = timer_hw->timerawl;` (32 bits bajos).  
+4. **Deadlines iniciales**: `nextX_us = now_us + INTERVALOX_US` (X=0..3).  
+5. **Programación de alarmas**: `timer_hw->alarm[ALARMX_NUM] = nextX_us`.  
+6. **ISRs registradas** y **IRQs habilitadas**.  
+7. **Bucle principal**: `tight_loop_contents();` (sin trabajo, todo ocurre en ISRs).
 
 ---
 
@@ -77,105 +68,150 @@ Cambia estos `#define` para ajustar la velocidad de cada LED de forma independie
 
 Cada ISR:
 
-- Limpia su *flag* con `hw_clear_bits(&timer_hw->intr, 1u << ALARMX_NUM);`
-- Conmuta el pin con **registro de toggle**: `sio_hw->gpio_togl = 1u << LEDX_PIN;`
-- Agenda el **próximo deadline** sumando el intervalo: `nextX_us += INTERVALOX_US;`
-- Reprograma la alarma: `timer_hw->alarm[ALARMX_NUM] = nextX_us;`
+- Limpia su *flag*: `hw_clear_bits(&timer_hw->intr, 1u << ALARMX_NUM);`
+- Conmuta el pin: `sio_hw->gpio_togl = 1u << LEDX_PIN;`
+- Reagenda **desde el deadline**: `nextX_us += INTERVALOX_US;`
+- Reprograma su alarma: `timer_hw->alarm[ALARMX_NUM] = nextX_us;`
 
-Este patrón es robusto porque evita que la latencia de ISR se acumule (no se usa “now” al reprogramar; se usa el *deadline* previo + intervalo).
-
----
-
-## Compilación y carga (ejemplo)
-
-1. En tu `CMakeLists.txt`, vincula contra `pico_stdlib` y habilita stdio (si hace falta).
-2. `mkdir build && cd build`
-3. `cmake ..`
-4. `make -j`
-5. Arrastra el `.uf2` al volumen del Pico en modo BOOTSEL.
+Reagendar desde el *deadline* previo evita el *drift* que ocurriría si se usara el “tiempo actual”.
 
 ---
 
 ## Consideraciones de temporización
 
-- **Rollover de 32 bit:** `timerawl` y `nextX_us` son de 32 bit (µs). El *wrap* ocurre cada 2^32 µs ≈ **71.58 min**.  
-  El esquema “deadline += intervalo” maneja bien el wrap si **alarm** y **nextX_us** permanecen en 32 bit (no mezclar con tiempos de 64 bit).  
-  Si necesitas periodos por encima de ~1 h o marcar timestamps, considera `time_us_64()`.
-
-- **SIO toggle:** `sio_hw->gpio_togl` requiere que el GPIO esté en función SIO (lo deja así `gpio_init()` por defecto). Es rápido y atómico.
-
-- **Carga de ISR:** Evita trabajo pesado dentro de la ISR; aquí solo se hace toggle y reprogramación.
+- **Rollover 32 bit**: `timerawl`/`nextX_us` envuelven cada ≈ 71.58 min (2^32 µs). El esquema por *deadlines* lo maneja bien si todo se mantiene en 32 bits.  
+- **SIO toggle**: Requiere GPIO en función SIO (por defecto tras `gpio_init()`). Es atómico y rápido.  
+- **ISRs ligeras**: Evita trabajo pesado dentro de interrupciones.
 
 ---
 
-## Problemas/bugs detectados en el listado original
+## Errores comunes y correcciones
 
-1. **Programación de alarmas 2 y 3 (error de índices):**  
-   En la sección “Programa ambas alarmas” se reescriben índices de 0 y 1 en lugar de 2 y 3.  
-   **Original:**
-   ```c
-   timer_hw->alarm[ALARM0_NUM] = next0_us;
-   timer_hw->alarm[ALARM1_NUM] = next1_us;
-   timer_hw->alarm[ALARM0_NUM] = next2_us;  // <-- debería ser ALARM2_NUM
-   timer_hw->alarm[ALARM1_NUM] = next3_us;  // <-- debería ser ALARM3_NUM
-   ```
-   **Corrección:**
-   ```c
-   timer_hw->alarm[ALARM0_NUM] = next0_us;
-   timer_hw->alarm[ALARM1_NUM] = next1_us;
-   timer_hw->alarm[ALARM2_NUM] = next2_us;
-   timer_hw->alarm[ALARM3_NUM] = next3_us;
-   ```
-
-2. **Comentario de pin no coincide:**  
-   `LED1_PIN` está definido como **13**, pero el comentario dice “GPIO 0”. Corrige uno de los dos.
-
----
-
-## Cómo ajustar velocidades
-
-1. Modifica las constantes `INTERVALO*_US`.  
-   Ejemplo para **LED2 a 5 Hz**: periodo = 1/5 s = 0.2 s = **200000 µs**  
-   ```c
-   #define INTERVALO2_US 200000u
-   ```
-2. Compila y carga de nuevo.
-
----
-
-## Extensiones sugeridas
-
-- **Duty cycle** con *PWM* en lugar de toggles si buscas brillo variable.
-- **Sincronización** (p. ej., que uno sea divisor del otro) usando múltiplos de un base-interval.
-- **Callback compartido** para varias alarmas con una tabla de contexto, reduciendo código repetido.
-- **Protección contra rebotes/colisiones** si más lógica usa SIO toggle sobre los mismos pines.
-
----
-
-## Fragmento compacto de inicialización (con correcciones aplicadas)
-
+**Programación de alarmas 2 y 3 (índices equivocados):**
 ```c
-// Base de tiempo y primeros deadlines
-timer_hw->source = 0u; // 1 MHz
-uint32_t now_us = timer_hw->timerawl;
-
-next0_us = now_us + INTERVALO0_US;
-next1_us = now_us + INTERVALO1_US;
-next2_us = now_us + INTERVALO2_US;
-next3_us = now_us + INTERVALO3_US;
-
-// Programa cada alarma en su índice correcto
+// Incorrecto (sobrescribe 0 y 1):
+timer_hw->alarm[ALARM0_NUM] = next0_us;
+timer_hw->alarm[ALARM1_NUM] = next1_us;
+timer_hw->alarm[ALARM0_NUM] = next2_us; // ← Debe ser ALARM2_NUM
+timer_hw->alarm[ALARM1_NUM] = next3_us; // ← Debe ser ALARM3_NUM
+// Correcto:
 timer_hw->alarm[ALARM0_NUM] = next0_us;
 timer_hw->alarm[ALARM1_NUM] = next1_us;
 timer_hw->alarm[ALARM2_NUM] = next2_us;
 timer_hw->alarm[ALARM3_NUM] = next3_us;
-```
 
----
+// Dos/4 LEDs con múltiples alarmas del timer de sistema (RP2350 / Pico 2) en µs.
+// Cada ALARMx controla un LED distinto. Ajusta INTERVALO*_US para la velocidad.
 
-## Resumen
+#include "pico/stdlib.h"
+#include "hardware/irq.h"
+#include "hardware/structs/timer.h"
+#include "hardware/gpio.h"
 
-- 4 LEDs, 4 *hardware alarms*, temporización en µs, sin bloqueo.  
-- ISR minimalista: limpia flag, *toggle*, reprograma deadline.  
-- Evita *drift* sumando el intervalo al *deadline* previo.  
-- **Corrige los índices** de `alarm[2]` y `alarm[3]` y alinea comentarios de pines.
+// Pines de LED (ajusta según tu placa)
+#define LED0_PIN 12
+#define LED1_PIN 13
+#define LED2_PIN 14
+#define LED3_PIN 15
+
+// Índices de alarmas
+#define ALARM0_NUM 0
+#define ALARM1_NUM 1
+#define ALARM2_NUM 2
+#define ALARM3_NUM 3
+
+// Números de IRQ ya resueltos por el SDK para cada alarma
+#define ALARM0_IRQ timer_hardware_alarm_get_irq_num(timer_hw, ALARM0_NUM)
+#define ALARM1_IRQ timer_hardware_alarm_get_irq_num(timer_hw, ALARM1_NUM)
+#define ALARM2_IRQ timer_hardware_alarm_get_irq_num(timer_hw, ALARM2_NUM)
+#define ALARM3_IRQ timer_hardware_alarm_get_irq_num(timer_hw, ALARM3_NUM)
+
+// Próximos "deadlines" (32 bits bajos en µs) y sus intervalos
+static volatile uint32_t next0_us, next1_us, next2_us, next3_us;
+static const uint32_t INTERVALO0_US = 250000u;  // 0.25 s
+static const uint32_t INTERVALO1_US = 500000u;  // 0.50 s
+static const uint32_t INTERVALO2_US = 750000u;  // 0.75 s
+static const uint32_t INTERVALO3_US = 1000000u; // 1.00 s
+
+// ISR para ALARM0
+static void on_alarm0_irq(void) {
+    hw_clear_bits(&timer_hw->intr, 1u << ALARM0_NUM);
+    sio_hw->gpio_togl = 1u << LED0_PIN;
+    next0_us += INTERVALO0_US;
+    timer_hw->alarm[ALARM0_NUM] = next0_us;
+}
+
+// ISR para ALARM1
+static void on_alarm1_irq(void) {
+    hw_clear_bits(&timer_hw->intr, 1u << ALARM1_NUM);
+    sio_hw->gpio_togl = 1u << LED1_PIN;
+    next1_us += INTERVALO1_US;
+    timer_hw->alarm[ALARM1_NUM] = next1_us;
+}
+
+// ISR para ALARM2
+static void on_alarm2_irq(void) {
+    hw_clear_bits(&timer_hw->intr, 1u << ALARM2_NUM);
+    sio_hw->gpio_togl = 1u << LED2_PIN;
+    next2_us += INTERVALO2_US;
+    timer_hw->alarm[ALARM2_NUM] = next2_us;
+}
+
+// ISR para ALARM3
+static void on_alarm3_irq(void) {
+    hw_clear_bits(&timer_hw->intr, 1u << ALARM3_NUM);
+    sio_hw->gpio_togl = 1u << LED3_PIN;
+    next3_us += INTERVALO3_US;
+    timer_hw->alarm[ALARM3_NUM] = next3_us;
+}
+
+int main() {
+    // Inicialización de GPIOs
+    gpio_init(LED0_PIN); gpio_set_dir(LED0_PIN, GPIO_OUT); gpio_put(LED0_PIN, 0);
+    gpio_init(LED1_PIN); gpio_set_dir(LED1_PIN, GPIO_OUT); gpio_put(LED1_PIN, 0);
+    gpio_init(LED2_PIN); gpio_set_dir(LED2_PIN, GPIO_OUT); gpio_put(LED2_PIN, 0);
+    gpio_init(LED3_PIN); gpio_set_dir(LED3_PIN, GPIO_OUT); gpio_put(LED3_PIN, 0);
+
+    // Timer de sistema en microsegundos (por defecto source = 0 → 1 MHz)
+    timer_hw->source = 0u;
+
+    // Toma "ahora" (32 bits bajos)
+    uint32_t now_us = timer_hw->timerawl;
+
+    // Primeros deadlines
+    next0_us = now_us + INTERVALO0_US;
+    next1_us = now_us + INTERVALO1_US;
+    next2_us = now_us + INTERVALO2_US;
+    next3_us = now_us + INTERVALO3_US;
+
+    // Programa las 4 alarmas
+    timer_hw->alarm[ALARM0_NUM] = next0_us;
+    timer_hw->alarm[ALARM1_NUM] = next1_us;
+    timer_hw->alarm[ALARM2_NUM] = next2_us;
+    timer_hw->alarm[ALARM3_NUM] = next3_us;
+
+    // Limpia flags pendientes antes de habilitar
+    hw_clear_bits(&timer_hw->intr,
+        (1u << ALARM0_NUM) | (1u << ALARM1_NUM) | (1u << ALARM2_NUM) | (1u << ALARM3_NUM));
+
+    // Registra handlers exclusivos para cada alarma
+    irq_set_exclusive_handler(ALARM0_IRQ, on_alarm0_irq);
+    irq_set_exclusive_handler(ALARM1_IRQ, on_alarm1_irq);
+    irq_set_exclusive_handler(ALARM2_IRQ, on_alarm2_irq);
+    irq_set_exclusive_handler(ALARM3_IRQ, on_alarm3_irq);
+
+    // Habilita fuentes de interrupción en el periférico TIMER
+    hw_set_bits(&timer_hw->inte,
+        (1u << ALARM0_NUM) | (1u << ALARM1_NUM) | (1u << ALARM2_NUM) | (1u << ALARM3_NUM));
+
+    // Habilita IRQs en el NVIC
+    irq_set_enabled(ALARM0_IRQ, true);
+    irq_set_enabled(ALARM1_IRQ, true);
+    irq_set_enabled(ALARM2_IRQ, true);
+    irq_set_enabled(ALARM3_IRQ, true);
+
+    // Bucle principal: todo el parpadeo ocurre en las ISRs
+    while (true) {
+        tight_loop_contents();
+    }
+}

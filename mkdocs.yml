@@ -52,7 +52,9 @@ nav:
       -Ping Pongs: practicas/pong.md
       -Inputs : practicas/inputs.md
       -Secuencia controlada : practicas/secuencia.md
-      -Temporizadores : practicas/temporizadores.md
+      -Temporizadores : 
+        -control de LEDs: practicas/temporizadores/temporizadores.md
+        -comparativas de código: practicas/temporizadores/comparativa.md
       
 
       

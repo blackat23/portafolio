@@ -55,6 +55,11 @@ nav:
       -Temporizadores : 
         -control de LEDs: practicas/temporizadores/temporizadores.md
         -comparativas de código: practicas/temporizadores/comparativa.md
+      -Control con PWM :
+        -Canción con pym :  practicas/PWM/control_pwm.md
+        -Control Motor con PWM : practicas/PWM/pwm_motor.md
+        -Generador de señal con pwm : practicas/PWM/seno_pwm.md
+
       
 
       

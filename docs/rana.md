@@ -96,3 +96,11 @@ La limpieza manual de estos espacios resulta complicada y poco eficiente, por lo
 ## VALUE PROPOSITION
 **RANA mantiene limpios los cuerpos de agua con navegación asistida y entrega evidencia medible (kg recolectados, m² cubiertos, turbidez) para reducir quejas y **justificar presupuesto** con datos.**
 
+
+## Costos del producto:
+
+[Descargar especificación (PDF)](recursos/archivos/costos_rana.pdf)
+
+<object data="../recursos/archivos/costos_rana.pdf" type="application/pdf" width="100%" height="600">
+  <p>No se pudo mostrar el PDF. <a href="../recursos/archivos/costos_rana.pdf">Descargar</a></p>
+</object>

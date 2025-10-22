@@ -59,6 +59,8 @@ nav:
         -Canción con pym :  practicas/PWM/control_pwm.md
         -Control Motor con PWM : practicas/PWM/pwm_motor.md
         -Generador de señal con pwm : practicas/PWM/seno_pwm.md
+      -Comunicación UART :
+        -Comunicación UART:  practicas/uart/uart.md
 
       
 

@@ -61,6 +61,7 @@ nav:
         -Generador de señal con pwm : practicas/PWM/seno_pwm.md
       -Comunicación UART :
         -Comunicación UART:  practicas/uart/uart.md
+        -Control de Servomotor: practicas/uart/Examen.md
 
       
 

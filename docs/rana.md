@@ -116,3 +116,12 @@ La limpieza manual de estos espacios resulta complicada y poco eficiente, por lo
 <object data="../recursos/archivos/final.pdf" type="application/pdf" width="100%" height="600">
   <p>No se pudo mostrar el PDF. <a href="../recursos/archivos/final.pdf">Descargar</a></p>
 </object>
+
+## Documento final 
+
+
+[Descargar especificación (PDF)](recursos/archivos/docf.pdf)
+
+<object data="../recursos/archivos/docf.pdf" type="application/pdf" width="100%" height="600">
+  <p>No se pudo mostrar el PDF. <a href="../recursos/archivos/docf.pdf">Descargar</a></p>
+</object>

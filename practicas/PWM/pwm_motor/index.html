@@ -1,0 +1,1609 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../control_pwm/">
+      
+      
+        <link rel="next" href="../seno_pwm/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>-Control Motor con PWM - Portafolio de Antonio Martínez</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.2/css/all.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#control-de-motor-dc-por-pwm-3-velocidades-con-botones-raspberry-pi-pico-tb6612fng" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Portafolio de Antonio Martínez" class="md-header__button md-logo" aria-label="Portafolio de Antonio Martínez" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Portafolio de Antonio Martínez
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              -Control Motor con PWM
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Portafolio de Antonio Martínez" class="md-nav__button md-logo" aria-label="Portafolio de Antonio Martínez" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Portafolio de Antonio Martínez
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ejemplo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejemplo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../laberinto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laberinto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../controladores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    microcontroladores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rana/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proyecto rana
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../analisis_cafeteras/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Análisis sobre las cafeteras de cápsulas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raspberry Pi Pico 2
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Raspberry Pi Pico 2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sumador/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Contador Binario de 4 Bits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../barrido/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Barrido de LEDs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pong/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Ping Pongs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Inputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../secuencia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Secuencia controlada
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_6" id="__nav_7_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Temporizadores
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    -Temporizadores
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../temporizadores/temporizadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -control de LEDs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../temporizadores/comparativa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -comparativas de código
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7_7" id="__nav_7_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Control con PWM
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    -Control con PWM
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../control_pwm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Canción con pym
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Control Motor con PWM
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Control Motor con PWM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) Resumen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1) Resumen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#material-utilizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Material utilizado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-objetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Objetivos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-conexiones-esquema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Conexiones / Esquema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) Código
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-explicacion-del-programa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Explicación del programa
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5) Explicación del programa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-configuracion-de-pwm-20-khz-10-bits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        a) Configuración de PWM (20 kHz, 10 bits)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-direccion-del-motor-tb6612fng" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        b) Dirección del motor (TB6612FNG)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-botones-con-pull-up-y-debounce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        c) Botones con pull-up y debounce
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-tabla-de-velocidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        d) Tabla de velocidades
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-bucle-principal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        e) Bucle principal
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-pruebas-y-comportamiento-esperado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6) Pruebas y comportamiento esperado
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seno_pwm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Generador de señal con pwm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_8" id="__nav_7_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Comunicación UART
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    -Comunicación UART
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../uart/uart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Comunicación UART
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../uart/Examen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Control de Servomotor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) Resumen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1) Resumen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#material-utilizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Material utilizado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-objetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Objetivos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-conexiones-esquema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Conexiones / Esquema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) Código
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-explicacion-del-programa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Explicación del programa
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5) Explicación del programa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-configuracion-de-pwm-20-khz-10-bits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        a) Configuración de PWM (20 kHz, 10 bits)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-direccion-del-motor-tb6612fng" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        b) Dirección del motor (TB6612FNG)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-botones-con-pull-up-y-debounce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        c) Botones con pull-up y debounce
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-tabla-de-velocidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        d) Tabla de velocidades
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-bucle-principal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        e) Bucle principal
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-pruebas-y-comportamiento-esperado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6) Pruebas y comportamiento esperado
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="control-de-motor-dc-por-pwm-3-velocidades-con-botones-raspberry-pi-pico-tb6612fng">Control de motor DC por PWM (3 velocidades) con botones (Raspberry Pi Pico + TB6612FNG)</h1>
+<blockquote>
+<p>Este proyecto controla la <strong>velocidad de un motor DC</strong> mediante <strong>PWM</strong> usando un Raspberry Pi Pico/Pico 2 y el driver <strong>TB6612FNG</strong>. Dos botones (SUBIR/BAJAR) cambian entre <strong>tres niveles de velocidad</strong> predefinidos. El PWM trabaja a <strong>20 kHz</strong> (fuera del rango audible).</p>
+</blockquote>
+<hr />
+<h2 id="1-resumen">1) Resumen</h2>
+<ul>
+<li><strong>Nombre del proyecto:</strong> <em>Motor DC PWM 3 velocidades</em>  </li>
+<li><strong>Equipo / Autor(es):</strong> <em>Antonio Martínez</em>  </li>
+<li><strong>Curso / Asignatura:</strong> <em>Sistemas Embebidos</em>  </li>
+<li><strong>Fecha:</strong> <em>01/10/2025</em>  </li>
+<li><strong>Descripción breve:</strong> <em>Control de un motor DC con TB6612FNG usando PWM (20 kHz) y dos botones con _pull-up</em> interno para seleccionar 3 niveles de velocidad (70%, 80%, 90%)._  </li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Información del proyecto:</p>
+<p><strong>Lenguaje/SDK:</strong> C con Raspberry Pi Pico SDK (<code>pico/stdlib.h</code>, <code>hardware/pwm.h</code>).<br />
+<strong>Técnicas clave:</strong> PWM (20 kHz), cálculo de <code>clkdiv</code> y <code>wrap</code>, <em>debounce</em> por software, lectura de GPIO con <em>pull-up</em> y detección de flanco.<br />
+<strong>Plataforma:</strong> Raspberry Pi Pico / Pico 2.  </p>
+</div>
+<h3 id="material-utilizado">Material utilizado</h3>
+<ul>
+<li>Raspberry Pi Pico (o Pico 2) y cable USB  </li>
+<li>Driver <strong>TB6612FNG</strong>  </li>
+<li><strong>Motor DC</strong> (compatible con la tensión de VM y corriente del driver)  </li>
+<li><strong>Fuente de VM</strong> (ej. 5–12 V según motor)  </li>
+<li>2 <strong>botones</strong> momentáneos (a GND, sin resistencias externas gracias al <em>pull-up</em> interno)  </li>
+<li>Protoboard y jumpers</li>
+</ul>
+<hr />
+<h2 id="2-objetivos">2) Objetivos</h2>
+<ul>
+<li>Configurar <strong>PWM</strong> a 20 kHz sobre un pin GPIO para modular la velocidad del motor.  </li>
+<li>Implementar <strong>tres velocidades</strong> predefinidas con cambios mediante <strong>dos botones</strong> (subir/bajar).  </li>
+<li>Aplicar <strong><em>debounce</em></strong> por software y detección de <strong>flanco 1→0</strong>.  </li>
+<li>Fijar <strong>dirección de giro</strong> con pines AIN1/AIN2 (TB6612FNG).</li>
+</ul>
+<hr />
+<h2 id="3-conexiones-esquema">3) Conexiones / Esquema</h2>
+<p><strong>Notas generales (TB6612FNG):</strong>
+- <strong>PWMA</strong> controla el canal A (ancho de pulso).<br />
+- <strong>AIN1/AIN2</strong> fijan la dirección del canal A.<br />
+- <strong>AO1/AO2</strong> salen al motor.<br />
+- <strong>VM</strong>: alimentación del motor (p. ej. 6–12 V).<br />
+- <strong>VCC</strong>: 3V3 lógicos desde el Pico.<br />
+- <strong>GND común</strong> entre Pico, TB6612 y la fuente del motor.<br />
+- <strong>STBY</strong>: mantener en alto (3V3) para habilitar el driver.</p>
+<p><strong>Mapeo de pines (según el código):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Señal (Pico)</th>
+<th>GPIO</th>
+<th>TB6612FNG</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PWM_PIN</code></td>
+<td>0</td>
+<td>PWMA</td>
+<td>PWM 20 kHz (control de velocidad)</td>
+</tr>
+<tr>
+<td><code>DIR1_PIN</code></td>
+<td>16</td>
+<td>AIN1</td>
+<td>Dirección (bit 1)</td>
+</tr>
+<tr>
+<td><code>DIR2_PIN</code></td>
+<td>17</td>
+<td>AIN2</td>
+<td>Dirección (bit 2)</td>
+</tr>
+<tr>
+<td><code>BTN_DOWN_PIN</code></td>
+<td>2</td>
+<td>—</td>
+<td>Botón BAJAR (a GND, <em>pull-up</em>)</td>
+</tr>
+<tr>
+<td><code>BTN_UP_PIN</code></td>
+<td>3</td>
+<td>—</td>
+<td>Botón SUBIR (a GND, <em>pull-up</em>)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Botones (activos en bajo):</strong>
+- Un terminal del botón a <strong>GND</strong>; el otro a <strong>GPIO 2</strong> (BAJAR) o <strong>GPIO 3</strong> (SUBIR).<br />
+- Se habilita <code>gpio_pull_up()</code>, por lo que al presionar: <strong>0 lógico</strong>.</p>
+<p><strong>Dirección fija (ejemplo):</strong><br />
+- <code>AIN1=1</code> y <code>AIN2=0</code> (definido en el código) → giro <strong>adelante</strong>.<br />
+- Para invertir el giro: <strong>intercambia</strong> los valores o cablea al revés.</p>
+<p><strong>Diagrama de conexión</strong><br />
+<img alt="Conexión Pico + TB6612FNG" src="../recursos/imgs/motor_pwm_tb6612.png" /></p>
+<hr />
+<h2 id="4-codigo">4) Código</h2>
+<p>```c
+    // dc_motor_pwm.c — Control de motor DC con 3 velocidades (baja/media/alta)
+    // Raspberry Pi Pico / Pico 2 + TB6612FNG (ejemplo)
+    // PWM en GPIO15 → PWMA; Dirección: AIN1 (GPIO16), AIN2 (GPIO17)
+    // Botones a GND con pull-up interno: BTN_DOWN(GPIO13), BTN_UP(GPIO14)</p>
+<div class="language-text highlight"><pre><span></span><code>#include &quot;pico/stdlib.h&quot;
+#include &quot;hardware/pwm.h&quot;
+
+// ----------------- Pines -----------------
+#define PWM_PIN      0       // PWMA (TB6612)
+#define DIR1_PIN     16     // AIN1
+#define DIR2_PIN     17     // AIN2
+#define BTN_DOWN_PIN 2     // Botón: bajar velocidad
+#define BTN_UP_PIN   3     // Botón: subir velocidad
+
+// ----------------- PWM -------------------
+#define F_PWM_HZ  20000     // 20 kHz: fuera de audio
+#define TOP       1023      // 10 bits de resolución (0..1023)
+
+// ----------------- Debounce --------------
+#define DEBOUNCE_MS 30
+
+int main() {
+    stdio_init_all();
+
+// --- Dirección: adelante (AIN1=1, AIN2=0) ---
+gpio_init(DIR1_PIN); gpio_set_dir(DIR1_PIN, GPIO_OUT); gpio_put(DIR1_PIN, 1);
+gpio_init(DIR2_PIN); gpio_set_dir(DIR2_PIN, GPIO_OUT); gpio_put(DIR2_PIN, 0);
+
+// --- Botones con pull-up interno (activos en 0) ---
+gpio_init(BTN_DOWN_PIN); gpio_set_dir(BTN_DOWN_PIN, GPIO_IN); gpio_pull_up(BTN_DOWN_PIN);
+gpio_init(BTN_UP_PIN);   gpio_set_dir(BTN_UP_PIN,   GPIO_IN); gpio_pull_up(BTN_UP_PIN);
+
+// --- PWM en el pin de control de velocidad ---
+gpio_set_function(PWM_PIN, GPIO_FUNC_PWM);
+uint slice = pwm_gpio_to_slice_num(PWM_PIN);
+uint chan  = pwm_gpio_to_channel(PWM_PIN);
+
+float f_clk = 150000000.0f;                         // 125 MHz
+float div   = f_clk / (F_PWM_HZ * (TOP + 1));       // clkdiv flotante
+pwm_set_clkdiv(slice, div);
+pwm_set_wrap(slice, TOP);
+
+pwm_set_chan_level(slice, chan, 0);                 // arranque detenido
+pwm_set_enabled(slice, true);
+
+// --- Tabla de 3 velocidades (duty) ---
+// Baja=35%, Media=65%, Alta=90%
+uint16_t speed_levels[] = {
+    (uint16_t)(TOP * 0.70f),
+    (uint16_t)(TOP * 0.80f),
+    (uint16_t)(TOP * 0.90f)
+};
+const int NUM_SPEEDS = 3;
+
+int idx = 0; // índice de velocidad actual (0=baja)
+uint32_t t_last_down = 0, t_last_up = 0;
+int last_down = 1, last_up = 1; // estados anteriores (con pull-up, reposo=1)
+
+// Aplica velocidad inicial
+pwm_set_chan_level(slice, chan, speed_levels[idx]);
+
+while (true) {
+    // --- Leer botones (con edge + debounce) ---
+    int cur_down = gpio_get(BTN_DOWN_PIN);
+    int cur_up   = gpio_get(BTN_UP_PIN);
+    uint32_t now = to_ms_since_boot(get_absolute_time());
+
+    // Botón DOWN: flanco de 1-&gt;0
+    if (last_down == 1 &amp;&amp; cur_down == 0 &amp;&amp; (now - t_last_down) &gt; DEBOUNCE_MS) {
+        if (idx &gt; 0) idx--;
+        pwm_set_chan_level(slice, chan, speed_levels[idx]);
+        t_last_down = now;
+    }
+    // Botón UP: flanco de 1-&gt;0
+    if (last_up == 1 &amp;&amp; cur_up == 0 &amp;&amp; (now - t_last_up) &gt; DEBOUNCE_MS) {
+        if (idx &lt; (NUM_SPEEDS - 1)) idx++;
+        pwm_set_chan_level(slice, chan, speed_levels[idx]);
+        t_last_up = now;
+    }
+
+    last_down = cur_down;
+    last_up   = cur_up;
+
+    sleep_ms(5);
+}
+</code></pre></div>
+<p>}</p>
+<h2 id="5-explicacion-del-programa">5) Explicación del programa</h2>
+<h3 id="a-configuracion-de-pwm-20-khz-10-bits">a) Configuración de PWM (20 kHz, 10 bits)</h3>
+<ul>
+<li><code>F_PWM_HZ = 20000</code> y <code>TOP = 1023</code> → resolución de <strong>10 bits</strong> (0..1023).</li>
+<li>Se calcula <code>clkdiv</code> con <code>div = f_clk / (F_PWM_HZ * (TOP + 1))</code>.</li>
+<li><strong>Nota:</strong> En el código <code>f_clk = 150e6</code> con comentario “125 MHz”. Ajusta el valor si tu reloj es 125 MHz (<code>125000000.0f</code>) o deja 150 MHz si realmente configuraste el PLL a esa frecuencia.</li>
+<li><code>pwm_set_wrap(slice, TOP)</code> y <code>pwm_set_clkdiv(slice, div)</code> fijan la frecuencia.</li>
+<li><code>pwm_set_chan_level(slice, chan, duty)</code> actualiza el <strong>ciclo de trabajo</strong>.</li>
+</ul>
+<h3 id="b-direccion-del-motor-tb6612fng">b) Dirección del motor (TB6612FNG)</h3>
+<ul>
+<li>Se fuerza <strong>adelante</strong> con <code>AIN1=1</code>, <code>AIN2=0</code>.</li>
+<li>Para invertir el giro: <code>AIN1=0</code>, <code>AIN2=1</code>. No uses <code>0/0</code> (rueda libre) ni <code>1/1</code> (freno) salvo intencionalmente.</li>
+</ul>
+<h3 id="c-botones-con-pull-up-y-debounce">c) Botones con <em>pull-up</em> y <em>debounce</em></h3>
+<ul>
+<li><code>BTN_DOWN_PIN</code> (GPIO 2) y <code>BTN_UP_PIN</code> (GPIO 3) como <strong>entradas</strong> con <code>gpio_pull_up()</code>.</li>
+<li>Se detecta <strong>flanco 1→0</strong> (presión) comparando estado previo/actual.</li>
+<li><strong>Debounce:</strong> <code>DEBOUNCE_MS = 30</code> ms por botón con marcas de tiempo (<code>to_ms_since_boot</code>).</li>
+</ul>
+<h3 id="d-tabla-de-velocidades">d) Tabla de velocidades</h3>
+<ul>
+<li>Niveles en <code>speed_levels[]</code>: <strong>70%</strong>, <strong>80%</strong>, <strong>90%</strong> del <code>TOP</code>.</li>
+<li><strong>Nota:</strong> El comentario dice “35/65/90%”, pero el <strong>código actual aplica 70/80/90%</strong>. Cambia los coeficientes <code>0.70f, 0.80f, 0.90f</code> si deseas otros niveles (p. ej., <code>0.35f, 0.65f, 0.90f</code>).</li>
+<li><code>idx</code> selecciona el nivel. Los botones <strong>BAJAR/SUBIR</strong> decrementan/incrementan <code>idx</code> dentro de <code>[0, NUM_SPEEDS-1]</code>.</li>
+</ul>
+<h3 id="e-bucle-principal">e) Bucle principal</h3>
+<ul>
+<li>Lee botones, aplica <em>debounce</em>, actualiza <code>idx</code> si hay flanco válido y <strong>reprograma el duty</strong> con <code>pwm_set_chan_level</code>.</li>
+<li><code>sleep_ms(5)</code> fija la <strong>cadencia de sondeo</strong> (~200 Hz), suficiente para la interfaz de botones.</li>
+</ul>
+<hr />
+<h2 id="6-pruebas-y-comportamiento-esperado">6) Pruebas y comportamiento esperado</h2>
+<ul>
+<li><strong>Arranque:</strong> motor en marcha a la <strong>velocidad 0 (70%)</strong>.</li>
+<li><strong>Botón SUBIR (GPIO 3):</strong> incrementa a <strong>80%</strong> y luego <strong>90%</strong>.</li>
+<li><strong>Botón BAJAR (GPIO 2):</strong> decrementa hacia <strong>80%</strong> y <strong>70%</strong>.</li>
+<li><strong>Debounce estable:</strong> pulsaciones rápidas no deben generar múltiples cambios espurios.</li>
+<li><strong>Silencio eléctrico:</strong> PWM a <strong>20 kHz</strong> evita zumbidos audibles en la mayoría de motores.</li>
+</ul>
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+  <iframe
+    src="https://www.youtube.com/embed/XNEPDBBVE14"
+    title="YouTube video"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;">
+  </iframe>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

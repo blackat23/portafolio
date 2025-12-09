@@ -1,0 +1,1641 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../temporizadores/comparativa/">
+      
+      
+        <link rel="next" href="../pwm_motor/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>-Canción con pym - Portafolio de Antonio Martínez</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.2/css/all.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#control-de-pwm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Portafolio de Antonio Martínez" class="md-header__button md-logo" aria-label="Portafolio de Antonio Martínez" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Portafolio de Antonio Martínez
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              -Canción con pym
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Portafolio de Antonio Martínez" class="md-nav__button md-logo" aria-label="Portafolio de Antonio Martínez" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Portafolio de Antonio Martínez
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ejemplo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejemplo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../laberinto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laberinto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../controladores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    microcontroladores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rana/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proyecto rana
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../analisis_cafeteras/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Análisis sobre las cafeteras de cápsulas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raspberry Pi Pico 2
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Raspberry Pi Pico 2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sumador/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Contador Binario de 4 Bits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../barrido/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Barrido de LEDs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pong/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Ping Pongs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Inputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../secuencia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Secuencia controlada
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_6" id="__nav_7_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Temporizadores
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    -Temporizadores
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../temporizadores/temporizadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -control de LEDs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../temporizadores/comparativa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -comparativas de código
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7_7" id="__nav_7_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Control con PWM
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    -Control con PWM
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Canción con pym
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Canción con pym
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#informacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Informacion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion-control-pwm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducción: Control PWM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#perifericos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Periféricos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ecosistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ecosistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#velocidad-de-trabajo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Velocidad de Trabajo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codigo-del-buzzer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codigo del buzzer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explicación
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pwm_motor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Control Motor con PWM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seno_pwm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Generador de señal con pwm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_8" id="__nav_7_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Comunicación UART
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    -Comunicación UART
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../uart/uart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Comunicación UART
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../uart/Examen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Control de Servomotor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#informacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Informacion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion-control-pwm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducción: Control PWM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#perifericos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Periféricos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ecosistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ecosistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#velocidad-de-trabajo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Velocidad de Trabajo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codigo-del-buzzer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codigo del buzzer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explicación
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="control-de-pwm">Control de PWM</h1>
+<dl>
+<dd>Periféricos, Memoria, Ecosistema, Costos, Arquitectura y Velocidad de Trabajo</dd>
+</dl>
+<hr />
+<h2 id="informacion">Informacion</h2>
+<ul>
+<li><strong>Nombre del proyecto:</strong> <em>Control de pwm con Raspberry Pico</em></li>
+<li><strong>Equipo / Autor(es):</strong> <em>Antonio Martínez</em></li>
+<li><strong>Curso / Asignatura:</strong> <em>Sistemas Embebidos</em></li>
+<li><strong>Fecha:</strong> <em>23/08/2025</em></li>
+<li><strong>Descripción breve:</strong> <em>Implementación de un sistema de generación de audio con buzzer pasivo usando control PWM en el microcontrolador RP2040 (Raspberry Pi Pico). Se documentan los periféricos utilizados y se ubica al RP2040 en una comparativa con otros MCUs.</em></li>
+</ul>
+<hr />
+<h2 id="introduccion-control-pwm">Introducción: Control PWM</h2>
+<p>En este proyecto se emplea el <strong>módulo PWM (Pulse Width Modulation)</strong> del microcontrolador <strong>RASPBERRY PICO</strong> para generar señales de audio en un buzzer pasivo.<br />
+El principio consiste en variar la frecuencia de la señal cuadrada enviada al buzzer, de manera que éste reproduzca diferentes notas musicales.  </p>
+<p>El código define una lista de notas (frecuencias en Hz) y figuras rítmicas (divisiones de tiempo), que son enviadas al periférico PWM del RP2040 para reproducir una melodía.  </p>
+<p>Este enfoque demuestra cómo los periféricos de un microcontrolador pueden ser usados no solo para control de motores o regulación de voltaje, sino también para la generación de sonidos y música digital.</p>
+<hr />
+<h2 id="perifericos">Periféricos</h2>
+<ul>
+<li><strong>RASPBERRY PICO</strong><br />
+    Se utiliza la Raspberry Pi Pico porque integra el microcontrolador RP2040, que cuenta con periféricos PWM de hardware dedicados. Esto permite generar señales de modulación por ancho de pulso de manera precisa y eficiente, sin sobrecargar el procesador principal. Además, la Pico es económica, fácil de programar y ampliamente soportada por la comunidad, lo que facilita el desarrollo y la depuración de proyectos de control de señales como este.</li>
+</ul>
+<hr />
+<h2 id="ecosistema">Ecosistema</h2>
+<p>El <strong>RP2040</strong> cuenta con un ecosistema creciente y robusto:  </p>
+<ul>
+<li><strong>Lenguajes soportados:</strong> C/C++ (usando SDK oficial) y MicroPython.  </li>
+<li><strong>IDE y entornos comunes:</strong> VSCode, Thonny, Arduino IDE (con soporte agregado).  </li>
+</ul>
+<hr />
+<h2 id="velocidad-de-trabajo">Velocidad de Trabajo</h2>
+<ul>
+<li>La Pico opera a <strong>150 MHz</strong>, lo cual resulta sobrado para generar PWM de audio.  </li>
+<li>El cálculo del divisor para el periférico PWM (<code>pwm_set_clkdiv_int_frac()</code>) se hace rápidamente gracias a la alta frecuencia de reloj.  </li>
+<li>En este proyecto, la frecuencia máxima usada fue ~2 kHz (notas musicales), muy por debajo del límite real del microcontrolador.  </li>
+</ul>
+<hr />
+<h2 id="codigo-del-buzzer">Codigo del buzzer</h2>
+<p>```c</p>
+<div class="language-text highlight"><pre><span></span><code>#include &lt;stdio.h&gt;
+#include &quot;pico/stdlib.h&quot;
+#include &quot;hardware/pwm.h&quot;
+
+
+#define BUZZER_PIN 15
+#define BPM 200           
+#define GAP_MS 12
+
+// notes en hz
+#define NOTE_B0  31
+#define NOTE_C1  33
+#define NOTE_CS1 35
+#define NOTE_D1  37
+#define NOTE_DS1 39
+#define NOTE_E1  41
+#define NOTE_F1  44
+#define NOTE_FS1 46
+#define NOTE_G1  49
+#define NOTE_GS1 52
+#define NOTE_A1  55
+#define NOTE_AS1 58
+#define NOTE_B1  62
+#define NOTE_C2  65
+#define NOTE_CS2 69
+#define NOTE_D2  73
+#define NOTE_DS2 78
+#define NOTE_E2  82
+#define NOTE_F2  87
+#define NOTE_FS2 93
+#define NOTE_G2  98
+#define NOTE_GS2 104
+#define NOTE_A2  110
+#define NOTE_AS2 117
+#define NOTE_B2  123
+#define NOTE_C3  131
+#define NOTE_CS3 139
+#define NOTE_D3  147
+#define NOTE_DS3 156
+#define NOTE_E3  165
+#define NOTE_F3  175
+#define NOTE_FS3 185
+#define NOTE_G3  196
+#define NOTE_GS3 208
+#define NOTE_A3  220
+#define NOTE_AS3 233
+#define NOTE_B3  247
+#define NOTE_C4  262
+#define NOTE_CS4 277
+#define NOTE_D4  294
+#define NOTE_DS4 311
+#define NOTE_E4  330
+#define NOTE_F4  349
+#define NOTE_FS4 370
+#define NOTE_G4  392
+#define NOTE_GS4 415
+#define NOTE_A4  440
+#define NOTE_AS4 466
+#define NOTE_B4  494
+#define NOTE_C5  523
+#define NOTE_CS5 554
+#define NOTE_D5  587
+#define NOTE_DS5 622
+#define NOTE_E5  659
+#define NOTE_F5  698
+#define NOTE_FS5 740
+#define NOTE_G5  784
+#define NOTE_GS5 831
+#define NOTE_A5  880
+#define NOTE_AS5 932
+#define NOTE_B5  988
+#define NOTE_C6  1047
+#define NOTE_CS6 1109
+#define NOTE_D6  1175
+#define NOTE_DS6 1245
+#define NOTE_E6  1319
+#define NOTE_F6  1397
+#define NOTE_FS6 1480
+#define NOTE_G6  1568
+#define NOTE_GS6 1661
+#define NOTE_A6  1760
+#define NOTE_AS6 1865
+#define NOTE_B6  1976
+
+#define REST 0
+
+// ====== Figuras (divisor del pulso) ======
+// Duración real (ms) = (60000 / BPM) * 4 / FIG
+#define W   1   // redonda (4 tiempos)
+#define H   2   // blanca   (2 tiempos)
+#define Q   4   // negra    (1 tiempo)
+#define E   8   // corchea  (1/2)
+#define S   16  // semicor. (1/4)
+#define T32 32  // fusa
+
+// ====== PWM helper ======
+static void pwm_set_freq_duty(uint pin, uint32_t freq, float duty_percent) {
+    gpio_set_function(pin, GPIO_FUNC_PWM); // seteamos la funcion del pin a PWM
+    uint slice = pwm_gpio_to_slice_num(pin); //Cambiar la funcioin de GPIO a PWM
+    uint chan  = pwm_gpio_to_channel(pin); //Asignamos el canal
+
+    if (freq == 0) {
+        pwm_set_enabled(slice, false);
+        return;
+    }
+
+    //Aqui empezamos a calcular el divisor
+
+    uint32_t f_sys = 150000000u; // la frecuencia del pico
+    uint32_t top = 4095; // aqui pensamos esto para usar 12 bits, pues tenemos la formula log2(top +1)
+    float div = (float)f_sys / (freq * (top + 1));
+
+    //esto es solo por si se sale de rano el divisor
+    if (div &lt; 1.0f) div = 1.0f;          // límite inferior ( pues solo tiene un rango el pwm de 1 a 255)
+    if (div &gt; 255.0f) div = 255.0f;      // límite superior
+
+    uint32_t div_int  = (uint32_t)div; //dividimos div en su parte entera
+    uint32_t div_frac = (uint32_t)((div - div_int) * 16.0f); // y esta es su parte fraccionaria
+    //basicamente se define div que se usará
+
+
+    pwm_set_clkdiv_int_frac(slice, div_int, div_frac); //seteamos el divisor, esta es como la funcion pwm_set_clkdiv pero con parte fraccionaria
+    pwm_set_wrap(slice, top);//seteamos el top
+
+    uint32_t level = (uint32_t)(duty_percent * 0.01f * (top + 1));
+    pwm_set_chan_level(slice, chan, level);
+    pwm_set_enabled(slice, true);
+}
+
+static inline uint32_t ms_per_whole(void) {
+    // para la duracion de una redonda 
+    return (60000u / BPM) * 4u;
+}
+
+static void play(uint32_t freq, uint32_t figure_div) {
+    uint32_t dur_ms = ms_per_whole() / figure_div;
+    if (freq == REST) {
+        pwm_set_freq_duty(BUZZER_PIN, 0, 0);
+        sleep_ms(dur_ms);
+    } else {
+        pwm_set_freq_duty(BUZZER_PIN, freq, 50.0f);
+
+        sleep_ms(dur_ms);
+        pwm_set_freq_duty(BUZZER_PIN, 0, 0);
+
+    }
+}
+
+
+static const uint16_t melody[] = {
+    // Frase A
+    NOTE_D4, NOTE_D4, NOTE_D5,
+    NOTE_A4, REST, NOTE_GS4,
+    REST, NOTE_G4, NOTE_F4, 
+    NOTE_F4, NOTE_D4, NOTE_F4, NOTE_G4,
+    //B
+    NOTE_C4, NOTE_C4, NOTE_D5,
+    NOTE_A4, REST, NOTE_GS4,
+    REST, NOTE_G4, NOTE_F4,
+    NOTE_F4, NOTE_D4, NOTE_F4, NOTE_G4,
+    //C
+    NOTE_A3, NOTE_A3, NOTE_D5,
+    NOTE_A4, REST, NOTE_GS4,
+    REST, NOTE_G4, NOTE_F4,
+    NOTE_F4, NOTE_D4, NOTE_F4, NOTE_G4,
+    //D 
+    NOTE_AS3, NOTE_A3, NOTE_D5,
+    NOTE_A4, REST, NOTE_GS4,
+    REST, NOTE_G4, NOTE_F4,
+    NOTE_F4, NOTE_D4, NOTE_F4, NOTE_G4,
+
+    //REPEAT 2
+    NOTE_D4, NOTE_D4, NOTE_D5,
+    NOTE_A4, REST, NOTE_GS4,
+    REST, NOTE_G4, NOTE_F4, 
+    NOTE_F4, NOTE_D4, NOTE_F4, NOTE_G4,
+    //B
+    NOTE_C4, NOTE_C4, NOTE_D5,
+    NOTE_A4, REST, NOTE_GS4,
+    REST, NOTE_G4, NOTE_F4,
+    NOTE_F4, NOTE_D4, NOTE_F4, NOTE_G4,
+    //C
+    NOTE_A3, NOTE_A3, NOTE_D5,
+    NOTE_A4, REST, NOTE_GS4,
+    REST, NOTE_G4, NOTE_F4,
+    NOTE_F4, NOTE_D4, NOTE_F4, NOTE_G4,
+    //D 
+    NOTE_AS3, NOTE_A3, NOTE_D5,
+    NOTE_A4, REST, NOTE_GS4,
+    REST, NOTE_G4, NOTE_F4,
+    NOTE_F4, NOTE_D4, NOTE_F4, NOTE_G4,
+
+    //siguiente f   
+    NOTE_AS3, NOTE_A3, NOTE_D5,
+    NOTE_A4, REST, NOTE_GS4,
+    REST, NOTE_G4, NOTE_F4,
+    NOTE_F4, NOTE_D4, NOTE_F4, NOTE_G4,
+    // G
+    NOTE_C5, NOTE_C5, NOTE_C6,
+    NOTE_A4, REST, NOTE_GS6,REST,
+    NOTE_G5, NOTE_F5,
+    NOTE_F5,NOTE_C5,NOTE_F5,NOTE_G5,
+    //H
+    NOTE_C5, NOTE_C5, NOTE_C6,
+    NOTE_A4, REST, NOTE_GS6,REST,
+    NOTE_G5, NOTE_F5,
+    NOTE_F5,NOTE_C5,NOTE_F5,NOTE_G5,
+    //x2
+    NOTE_C5, NOTE_C5, NOTE_C6,
+    NOTE_A4, REST, NOTE_GS6,REST,
+    NOTE_G5, NOTE_F5,
+    NOTE_F5,NOTE_C5,NOTE_F5,NOTE_G5,
+    //H
+    NOTE_C5, NOTE_C5, NOTE_C6,
+    NOTE_A4, REST, NOTE_GS6,REST,
+    NOTE_G5, NOTE_F5,
+    NOTE_F5,NOTE_C5,NOTE_F5,NOTE_G5,
+
+
+
+
+
+};
+
+static const uint8_t rhythm[] = {
+    // Frase A
+    E, E, Q,
+    Q, E, E, 
+    E,Q,E,
+    E,E,E,E,
+    /// Frase B
+    E, E, Q,
+    Q, E, E, 
+    E,Q,E,
+    E,E,E,E,
+    //FRASE C
+    E, E, Q,
+    Q, E, E, 
+    E,Q,E,
+    E,E,E,E,
+    //FRASE D
+    E, E, Q,
+    Q, E, E, 
+    E,Q,E,
+    E,E,E,E,
+
+    //REPEAT 2
+    E, E, Q,
+    Q, E, E, 
+    E,Q,E,
+    E,E,E,E,
+    /// Frase B
+    E, E, Q,
+    Q, E, E, 
+    E,Q,E,
+    E,E,E,E,
+    //FRASE C
+    E, E, Q,
+    Q, E, E, 
+    E,Q,E,
+    E,E,E,E,
+    //FRASE D
+    E, E, Q,
+    Q, E, E, 
+    E,Q,E,
+    E,E,E,E,
+    //siguiente f   
+    E, E, Q,  
+    E, E, Q,
+    Q, E, E, 
+    E,Q,E,
+    E,E,E,E,
+    // G
+    E,E,Q,
+    Q,E,E,E,
+    Q,E,
+    E,E,E,E,
+    //H
+    E,E,Q,
+    Q,E,E,E,
+    Q,E,
+    E,E,E,E,
+    //x2
+    E,E,Q,
+    Q,E,E,E,
+    Q,E,
+    E,E,E,E,
+    //H
+    E,E,Q,
+    Q,E,E,E,
+    Q,E,
+    E,E,E,E
+
+
+
+
+
+};
+
+
+// ====== main ======
+int main() {
+    stdio_init_all();
+    gpio_init(BUZZER_PIN);
+    gpio_set_dir(BUZZER_PIN, true);
+
+    const int notes = sizeof(melody) / sizeof(melody[0]);
+
+    while (true) {
+        for (int i = 0; i &lt; notes; ++i) {
+            play(melody[i], rhythm[i]);
+        }
+        sleep_ms(800);  // breve pausa antes de repetir
+    }
+    return 0;
+}
+</code></pre></div>
+<hr />
+<h2 id="explicacion">Explicación</h2>
+<h1 id="que-hace-playfreq-figure_div">¿Qué hace <code>play(freq, figure_div)</code>?</h1>
+<p>Función que <strong>toca una nota</strong> (o un silencio) en un buzzer mediante PWM durante el tiempo correspondiente a la figura rítmica.</p>
+<h2 id="parametros">Parámetros</h2>
+<ul>
+<li><code>freq</code>: frecuencia de la nota en Hz. Si es <code>REST</code>, se reproduce <strong>silencio</strong>.</li>
+<li><code>figure_div</code>: divisor de la figura musical (1=redonda, 2=blanca, 4=negra, 8=corchea, etc.).</li>
+</ul>
+<h2 id="flujo-de-ejecucion">Flujo de ejecución</h2>
+<ol>
+<li><strong>Duración</strong>: calcula <code>dur_ms = ms_per_whole() / figure_div</code>, usando el BPM para obtener la duración de una redonda y dividirla por la figura indicada.</li>
+<li><strong>Silencio (REST)</strong>:</li>
+<li>Si <code>freq == REST</code>, apaga el PWM (<code>pwm_set_freq_duty(..., 0, 0)</code>) y espera <code>dur_ms</code>.</li>
+<li><strong>Nota</strong>:</li>
+<li>Enciende el PWM con la <strong>frecuencia <code>freq</code></strong> y <strong>duty 50%</strong> (<code>pwm_set_freq_duty(BUZZER_PIN, freq, 50.0f)</code>), generando una onda cuadrada simétrica.</li>
+<li>Mantiene la nota con <code>sleep_ms(dur_ms)</code>.</li>
+<li><strong>Apaga</strong> el PWM al final para garantizar silencio.</li>
+</ol>
+<h2 id="claves">Claves</h2>
+<ul>
+<li>La <strong>frecuencia</strong> define el <strong>pitch</strong> (altura de la nota).</li>
+<li>El <strong>duty 50%</strong> ofrece buen equilibrio de volumen/timbre para un buzzer pasivo.</li>
+<li>Implementación <strong>bloqueante</strong>: <code>sleep_ms(...)</code> detiene la CPU durante la nota/silencio.</li>
+<li>Versión <strong>mínima</strong>: no incluye micro-silencios de articulación ni envolventes (ataque/decay).</li>
+</ul>
+<h2 id="referencias">Referencias</h2>
+<h2 id="video">Video</h2>
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+  <iframe
+    src="https://www.youtube.com/embed/bLRwLpEDBk8"
+    title="YouTube video"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;">
+  </iframe>
+</div>
+
+<ul>
+<li>Raspberry Pi Ltd. (2025). <em>RP2040 Datasheet</em>. Disponible en: <a href="https://www.raspberrypi.com/documentation/microcontrollers/rp2040.html">https://www.raspberrypi.com/documentation/microcontrollers/rp2040.html</a>  </li>
+<li>Código de práctica en C (PWM con buzzer), desarrollado por el autor (2025).  </li>
+<li>Espressif Systems, STMicroelectronics, NXP, Microchip, Texas Instruments – Datasheets oficiales de referencia.  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

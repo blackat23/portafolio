@@ -1,0 +1,1683 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../inputs/">
+      
+      
+        <link rel="next" href="../temporizadores/temporizadores/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>-Secuencia controlada - Portafolio de Antonio Martínez</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.2/css/all.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#direccion-de-secuenciaraspberry-pi-pico-pico-2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Portafolio de Antonio Martínez" class="md-header__button md-logo" aria-label="Portafolio de Antonio Martínez" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Portafolio de Antonio Martínez
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              -Secuencia controlada
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Portafolio de Antonio Martínez" class="md-nav__button md-logo" aria-label="Portafolio de Antonio Martínez" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Portafolio de Antonio Martínez
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ejemplo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejemplo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../laberinto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laberinto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../controladores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    microcontroladores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rana/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proyecto rana
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analisis_cafeteras/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Análisis sobre las cafeteras de cápsulas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raspberry Pi Pico 2
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Raspberry Pi Pico 2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sumador/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Contador Binario de 4 Bits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../barrido/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Barrido de LEDs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pong/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Ping Pongs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Inputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Secuencia controlada
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Secuencia controlada
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#direccion-de-secuenciaraspberry-pi-pico-pico-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dirección de Secuencia(Raspberry Pi Pico / Pico 2)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) Resumen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1) Resumen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#material-utilizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Material utilizado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-objetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Objetivos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-circuito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Circuito
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) Código
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-explicacion-del-programa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Explicación del programa
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5) Explicación del programa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-definiciones-y-mapeo-de-pines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        a) Definiciones y mapeo de pines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-variables-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        b) Variables clave
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-inicializacion-de-gpio-y-botones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        c) Inicialización de GPIO y botones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-temporizador-repetitivo-repeating_timer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        d) Temporizador repetitivo (repeating_timer)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-funcion-actualizar_leds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        e) Función actualizar_leds()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f-callback-de-botones-btn_callback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        f) Callback de botones (btn_callback)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g-maquina-de-estados-implicita" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        g) Máquina de estados implícita
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#video-de-demostracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Video de demostración
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_6" id="__nav_7_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Temporizadores
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    -Temporizadores
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../temporizadores/temporizadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -control de LEDs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../temporizadores/comparativa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -comparativas de código
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_7" id="__nav_7_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Control con PWM
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    -Control con PWM
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PWM/control_pwm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Canción con pym
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PWM/pwm_motor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Control Motor con PWM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PWM/seno_pwm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Generador de señal con pwm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_8" id="__nav_7_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Comunicación UART
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    -Comunicación UART
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uart/uart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Comunicación UART
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uart/Examen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Control de Servomotor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#direccion-de-secuenciaraspberry-pi-pico-pico-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dirección de Secuencia(Raspberry Pi Pico / Pico 2)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) Resumen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1) Resumen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#material-utilizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Material utilizado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-objetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Objetivos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-circuito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Circuito
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) Código
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-explicacion-del-programa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Explicación del programa
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5) Explicación del programa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-definiciones-y-mapeo-de-pines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        a) Definiciones y mapeo de pines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-variables-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        b) Variables clave
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-inicializacion-de-gpio-y-botones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        c) Inicialización de GPIO y botones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-temporizador-repetitivo-repeating_timer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        d) Temporizador repetitivo (repeating_timer)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-funcion-actualizar_leds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        e) Función actualizar_leds()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f-callback-de-botones-btn_callback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        f) Callback de botones (btn_callback)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g-maquina-de-estados-implicita" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        g) Máquina de estados implícita
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#video-de-demostracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Video de demostración
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>-Secuencia controlada</h1>
+
+<h2 id="direccion-de-secuenciaraspberry-pi-pico-pico-2">Dirección de Secuencia(Raspberry Pi Pico / Pico 2)</h2>
+<blockquote>
+<p>Este proyecto implementa un <strong>controlador de la dirección de secuencia</strong> usando Raspberry Pi Pico.<br />
+El sistema utiliza 5 LEDs para representar la cancha y 2 LEDs para la puntuación.<br />
+La “pelota” se mueve automáticamente en una dirección mediante un <strong>timer periódico</strong>; al llegar a un extremo, el controlador detiene la secuencia y espera la intervención del jugador correspondiente a través de <strong>interrupciones por botón</strong>.<br />
+El controlador gestiona el cambio de dirección de la secuencia según la respuesta del jugador, reiniciando la pelota al centro si hay error y actualizando la puntuación con los LEDs.</p>
+</blockquote>
+<hr />
+<h2 id="1-resumen">1) Resumen</h2>
+<ul>
+<li><strong>Nombre del proyecto:</strong> <em>Dirección de Secuencia</em>  </li>
+<li><strong>Autor:</strong> <em>Antonio Martínez</em>  </li>
+<li><strong>Curso / Asignatura:</strong> <em>Sistemas Embebidos</em>  </li>
+<li><strong>Fecha:</strong> <em>02/09/2025</em>  </li>
+<li><strong>Descripción breve:</strong> <em>Dirección de Secuencia.</em></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Información del proyecto</p>
+<ul>
+<li><strong>Lenguaje:</strong> C (Pico SDK)  </li>
+<li><strong>MCU:</strong> Raspberry Pi Pico / Pico 2 (RP2040)  </li>
+<li><strong>Librerías:</strong> <code>pico/stdlib.h</code>, <code>hardware/gpio.h</code>, <code>hardware/timer.h</code>  </li>
+<li><strong>Estrategia:</strong> Timer cada 500 ms mueve la pelota; en los extremos, se detiene y espera la <strong>IRQ del botón</strong> correcto.</li>
+</ul>
+</div>
+<h3 id="material-utilizado">Material utilizado</h3>
+<ul>
+<li>Raspberry Pi Pico / Pico 2  </li>
+<li>5 LEDs (cancha) + 2 LEDs (puntuación)  </li>
+<li>7 resistencias 220–330 Ω (limitación de corriente)  </li>
+<li>2 botones de pulso (Normally Open)  </li>
+<li>Cables, protoboard y cable USB  </li>
+<li>PC con VS Code + CMake + Pico SDK configurado</li>
+</ul>
+<hr />
+<h2 id="2-objetivos">2) Objetivos</h2>
+<ul>
+<li><strong>Timers y concurrencia simple:</strong> Usar <code>repeating_timer</code> para lógica periódica.  </li>
+<li><strong>Interrupciones GPIO:</strong> Capturar eventos de botón sin bloquear el bucle principal.  </li>
+<li><strong>Máquina de estados mínima:</strong> “en marcha” vs “esperando respuesta en extremo”.  </li>
+<li><strong>Buenas prácticas de GPIO:</strong> Pull-ups, flancos adecuados y actualización clara de LEDs.  </li>
+<li><strong>Retroalimentación visual:</strong> Puntos con LEDs de score y reinicio al centro.</li>
+</ul>
+<hr />
+<h2 id="3-circuito">3) Circuito</h2>
+<ul>
+<li><strong>Cancha (5 LEDs):</strong> GPIO <strong>9–13</strong> (cada uno con su resistencia a GND si el pin maneja nivel alto para encender).  </li>
+<li><strong>Puntuación:</strong> <code>LED_SCORE_P1</code> → <strong>GPIO 7</strong>, <code>LED_SCORE_P2</code> → <strong>GPIO 8</strong>.  </li>
+<li><strong>Botones:</strong> <code>BTN_P1</code> → <strong>GPIO 14</strong>, <code>BTN_P2</code> → <strong>GPIO 15</strong>, ambos con <strong>pull-up</strong> interno; el otro terminal del botón a <strong>GND</strong>.  </li>
+<li><strong>Alimentación:</strong> vía USB del Pico.</li>
+</ul>
+<blockquote>
+<p>Con pull-up, el botón en reposo lee <strong>1</strong> y al presionar baja a <strong>0</strong>. En este código las IRQ están configuradas por <strong>flanco de subida (0x8u)</strong>, es decir, al soltar.</p>
+</blockquote>
+<hr />
+<h2 id="4-codigo">4) Código</h2>
+<p>```c
+    #include <stdio.h>
+    #include "pico/stdlib.h"
+    #include "hardware/timer.h"
+    #include "hardware/gpio.h"</p>
+<div class="language-text highlight"><pre><span></span><code>// Pines de LEDs de la cancha
+#define LED0 9
+#define LED1 10
+#define LED2 11
+#define LED3 12
+#define LED4 13
+
+// LEDs de puntuación
+#define LED_SCORE_P1 7
+#define LED_SCORE_P2 8
+
+// Botones
+#define BTN_P1 14
+#define BTN_P2 15
+
+// Variables del juego
+volatile int pelota_pos = 2;       // posición inicial (LED del centro)
+volatile int direccion = 1;        // 1 → derecha, -1 → izquierda
+volatile bool esperando_respuesta = false;
+
+// Prototipos
+bool mover_pelota(struct repeating_timer *t);
+void actualizar_leds();
+void btn_callback(uint gpio, uint32_t events);
+
+int main() {
+    stdio_init_all();
+
+    // Configuración LEDs
+    int leds[] = {LED0, LED1, LED2, LED3, LED4, LED_SCORE_P1, LED_SCORE_P2};
+    for (int i = 0; i &lt; 7; i++) {
+        gpio_init(leds[i]);
+        gpio_set_dir(leds[i], true);
+        gpio_put(leds[i], 0);
+    }
+
+    // Configuración botones
+    // Configuración botón jugador 1
+    gpio_init(BTN_P1);
+    gpio_set_dir(BTN_P1, false);
+    gpio_pull_up(BTN_P1);
+
+    // Configuración botón jugador 2
+    gpio_init(BTN_P2);
+    gpio_set_dir(BTN_P2, false);
+    gpio_pull_up(BTN_P2);
+
+    // Registrar el callback global UNA sola vez
+    gpio_set_irq_enabled_with_callback(BTN_P1, 0x8u, true, &amp;btn_callback);
+
+    // Habilitar interrupción también en el otro botón, sin registrar callback otra vez
+    gpio_set_irq_enabled(BTN_P2, 0x8u, true);
+
+    // Timer para mover la pelota
+    struct repeating_timer timer;
+    add_repeating_timer_ms(500, mover_pelota, NULL, &amp;timer);
+
+    while (true) {
+        tight_loop_contents(); // loop vacío, todo se maneja con interrupciones y timer
+    }
+}
+
+// Timer: mueve la pelota
+bool mover_pelota(struct repeating_timer *t) {
+    if (esperando_respuesta) return true; // espera al jugador
+
+    // Apagar LEDs
+    for (int i = LED0; i &lt;= LED4; i++) gpio_put(i, 0);
+
+    // Mover pelota
+    pelota_pos += direccion;
+
+    // Revisar si llegó al extremo
+    if (pelota_pos &lt;= 0) {
+        esperando_respuesta = true; // espera botón del jugador 1
+        pelota_pos = 0;
+    } else if (pelota_pos &gt;= 4) {
+        esperando_respuesta = true; // espera botón del jugador 2
+        pelota_pos = 4;
+    }
+
+    actualizar_leds();
+    return true;
+}
+
+// Encender LED de la pelota
+void actualizar_leds() {
+    gpio_put(LED0, pelota_pos == 0);
+    gpio_put(LED1, pelota_pos == 1);
+    gpio_put(LED2, pelota_pos == 2);
+    gpio_put(LED3, pelota_pos == 3);
+    gpio_put(LED4, pelota_pos == 4);
+}
+
+// Callback de botones (interrupciones)
+void btn_callback(uint gpio, uint32_t events) {
+    if (!esperando_respuesta) return;
+
+    if (gpio == BTN_P1 &amp;&amp; pelota_pos == 0) {
+        direccion = 1; // devuelve hacia la derecha
+        esperando_respuesta = false;
+    } 
+    else if (gpio == BTN_P2 &amp;&amp; pelota_pos == 4) {
+        direccion = -1; // devuelve hacia la izquierda
+        esperando_respuesta = false;
+    } 
+    else {
+        // Falló → punto para el contrario
+        if (gpio == BTN_P1) {
+            gpio_put(LED_SCORE_P2, 1);
+            sleep_ms(500);
+            gpio_put(LED_SCORE_P2, 0);
+        } else {
+            gpio_put(LED_SCORE_P1, 1);
+            sleep_ms(500);
+            gpio_put(LED_SCORE_P1, 0);
+        }
+        // Reiniciar pelota
+        pelota_pos = 2;
+        direccion = (gpio == BTN_P1) ? 1 : -1;
+        esperando_respuesta = false;
+    }
+    actualizar_leds();
+}
+</code></pre></div>
+<h2 id="5-explicacion-del-programa">5) Explicación del programa</h2>
+<h3 id="a-definiciones-y-mapeo-de-pines">a) Definiciones y mapeo de pines</h3>
+<ul>
+<li><strong>Cancha (LEDs de juego):</strong> <code>LED0..LED4</code> en GPIO <strong>9–13</strong>. Representan la posición de la pelota en la cancha.  </li>
+<li><strong>Puntuación:</strong> <code>LED_SCORE_P1</code> (GPIO <strong>7</strong>) y <code>LED_SCORE_P2</code> (GPIO <strong>8</strong>). Se encienden brevemente cuando el jugador contrario gana un punto.  </li>
+<li><strong>Botones:</strong> <code>BTN_P1</code> (GPIO <strong>14</strong>) y <code>BTN_P2</code> (GPIO <strong>15</strong>), configurados con <strong>pull-up interno</strong> (en reposo = 1, presionado = 0).  </li>
+</ul>
+<hr />
+<h3 id="b-variables-clave">b) Variables clave</h3>
+<ul>
+<li><strong><code>pelota_pos ∈ {0..4}</code>:</strong> indica qué LED de la cancha está encendido, es decir, la posición actual de la pelota.  </li>
+<li><strong><code>direccion ∈ {+1, −1}</code>:</strong> determina si la pelota se mueve hacia la derecha (+1) o hacia la izquierda (−1).  </li>
+<li><strong><code>esperando_respuesta (bool)</code>:</strong> cuando la pelota llega a un extremo, el avance se pausa hasta que el jugador correspondiente presione su botón.  </li>
+</ul>
+<hr />
+<h3 id="c-inicializacion-de-gpio-y-botones">c) Inicialización de GPIO y botones</h3>
+<ul>
+<li>Los LEDs de la cancha y de puntuación se configuran como <strong>salida</strong> y se inicializan en <strong>apagado</strong> (<code>gpio_put(...,0)</code>).  </li>
+<li>Los botones se configuran como <strong>entrada</strong> con <code>gpio_pull_up()</code>.  </li>
+<li>Se registra un <strong>callback global</strong> con <code>gpio_set_irq_enabled_with_callback()</code> para BTN_P1.  </li>
+<li>Se habilita también la interrupción de BTN_P2 con <code>gpio_set_irq_enabled()</code>, pero sin registrar otro callback (se reutiliza el mismo).  </li>
+<li>Las interrupciones se configuran en <strong>flanco de subida (0x8u)</strong>, es decir, cuando el botón pasa de presionado a liberado.  </li>
+</ul>
+<hr />
+<h3 id="d-temporizador-repetitivo-repeating_timer">d) Temporizador repetitivo (<code>repeating_timer</code>)</h3>
+<ul>
+<li>Se crea un temporizador con <code>add_repeating_timer_ms(500, mover_pelota, ...)</code>, que ejecuta la función <code>mover_pelota</code> cada <strong>500 ms</strong>.  </li>
+<li>Si <code>esperando_respuesta = false</code>, la pelota avanza (<code>pelota_pos += direccion</code>).  </li>
+<li>Si llega a los extremos (<code>0</code> o <code>4</code>), se fija <code>esperando_respuesta = true</code> y el juego queda en pausa hasta que un jugador responda.  </li>
+</ul>
+<hr />
+<h3 id="e-funcion-actualizar_leds">e) Función <code>actualizar_leds()</code></h3>
+<ul>
+<li>Se encarga de <strong>reflejar la posición actual de la pelota</strong> encendiendo únicamente el LED correspondiente (<code>LED0..LED4</code>) y apagando los demás.  </li>
+</ul>
+<hr />
+<h3 id="f-callback-de-botones-btn_callback">f) Callback de botones (<code>btn_callback</code>)</h3>
+<ul>
+<li>Solo actúa si <code>esperando_respuesta = true</code>.  </li>
+<li><strong>Caso correcto:</strong>  </li>
+<li>Si la pelota está en el extremo izquierdo (<code>pelota_pos==0</code>) y se presiona <strong>BTN_P1</strong>, se cambia la dirección a derecha (<code>direccion=+1</code>) y se reanuda el juego.  </li>
+<li>Si la pelota está en el extremo derecho (<code>pelota_pos==4</code>) y se presiona <strong>BTN_P2</strong>, se cambia la dirección a izquierda (<code>direccion=-1</code>) y se reanuda el juego.  </li>
+<li><strong>Caso incorrecto (falla):</strong>  </li>
+<li>Si se presiona el botón equivocado, se enciende el LED de <strong>puntuación del contrario</strong> durante 500 ms.  </li>
+<li>Después, la pelota se reinicia al centro (<code>pelota_pos=2</code>) y la dirección inicial se ajusta según quién falló.  </li>
+</ul>
+<hr />
+<h3 id="g-maquina-de-estados-implicita">g) Máquina de estados implícita</h3>
+<ol>
+<li><strong>RUNNING:</strong> la pelota avanza automáticamente cada 500 ms.  </li>
+<li><strong>WAIT_INPUT:</strong> al llegar a un extremo, se detiene y espera la respuesta del jugador.  </li>
+<li><strong>SCORE:</strong> si el jugador falla, se muestra el punto en el LED correspondiente, se reinicia la pelota en el centro y se regresa a RUNNING.  </li>
+</ol>
+<hr />
+<h2 id="video-de-demostracion">Video de demostración</h2>
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+  <iframe
+    src="https://www.youtube.com/embed/twmNGeeP-nU"
+    title="YouTube Short"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;">
+  </iframe>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.tooltips"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

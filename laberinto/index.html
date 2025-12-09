@@ -1,0 +1,2250 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../ejemplo/">
+      
+      
+        <link rel="next" href="../controladores/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Laberinto - Portafolio de Antonio Martínez</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.2/css/all.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#robot-resolvedor-de-laberintos-raspberry-pi-pico-2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Portafolio de Antonio Martínez" class="md-header__button md-logo" aria-label="Portafolio de Antonio Martínez" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Portafolio de Antonio Martínez
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Laberinto
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Portafolio de Antonio Martínez" class="md-nav__button md-logo" aria-label="Portafolio de Antonio Martínez" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Portafolio de Antonio Martínez
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejemplo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejemplo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laberinto
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laberinto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) Resumen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1) Resumen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#material-utilizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Material utilizado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-objetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Objetivos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-circuito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Circuito
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3) Circuito">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-sensores-ir-izquierda-frente-y-derecha" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Sensores IR (izquierda, frente y derecha)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-motores-encoders-y-puente-h-tb6612fng" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Motores, encoders y puente H TB6612FNG
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-alimentacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Alimentación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-pcb-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4. PCB final
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) Código
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4) Código">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-codigo-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Código completo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-explicacion-del-programa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Explicación del programa
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5) Explicación del programa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-mapeo-de-pines-y-modulos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Mapeo de pines y módulos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-funciones-de-movimiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Funciones de movimiento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-bucle-principal-logica-de-navegacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3. Bucle principal: lógica de navegación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-consideraciones-de-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6) Consideraciones de hardware
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../controladores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    microcontroladores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rana/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proyecto rana
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analisis_cafeteras/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Análisis sobre las cafeteras de cápsulas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raspberry Pi Pico 2
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Raspberry Pi Pico 2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practicas/sumador/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Contador Binario de 4 Bits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practicas/barrido/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Barrido de LEDs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practicas/pong/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Ping Pongs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practicas/inputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Inputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practicas/secuencia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Secuencia controlada
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_6" id="__nav_7_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Temporizadores
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    -Temporizadores
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practicas/temporizadores/temporizadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -control de LEDs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practicas/temporizadores/comparativa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -comparativas de código
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_7" id="__nav_7_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Control con PWM
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    -Control con PWM
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practicas/PWM/control_pwm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Canción con pym
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practicas/PWM/pwm_motor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Control Motor con PWM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practicas/PWM/seno_pwm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Generador de señal con pwm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_8" id="__nav_7_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Comunicación UART
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    -Comunicación UART
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practicas/uart/uart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Comunicación UART
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practicas/uart/Examen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Control de Servomotor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) Resumen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1) Resumen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#material-utilizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Material utilizado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-objetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Objetivos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-circuito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Circuito
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3) Circuito">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-sensores-ir-izquierda-frente-y-derecha" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Sensores IR (izquierda, frente y derecha)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-motores-encoders-y-puente-h-tb6612fng" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Motores, encoders y puente H TB6612FNG
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-alimentacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Alimentación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-pcb-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4. PCB final
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) Código
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4) Código">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-codigo-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Código completo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-explicacion-del-programa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Explicación del programa
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5) Explicación del programa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-mapeo-de-pines-y-modulos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Mapeo de pines y módulos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-funciones-de-movimiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Funciones de movimiento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-bucle-principal-logica-de-navegacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3. Bucle principal: lógica de navegación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-consideraciones-de-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6) Consideraciones de hardware
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="robot-resolvedor-de-laberintos-raspberry-pi-pico-2">Robot Resolvedor de Laberintos (Raspberry Pi Pico 2)</h1>
+<blockquote>
+<p>Robot móvil diferencial que avanza dentro de un laberinto usando <strong>motores DC con encoders</strong> y un <strong>sensor de distancia ToF</strong> frontal (VL53L0X).<br />
+En esta primera versión, el robot avanza mientras no detecta muro de frente; cuando está demasiado cerca, realiza un giro de 90° a la izquierda.</p>
+</blockquote>
+<hr />
+<h2 id="1-resumen">1) Resumen</h2>
+<ul>
+<li><strong>Nombre del proyecto:</strong> <em>Robot Resolvedor de Laberintos</em>  </li>
+<li><strong>Autor:</strong> <em>Antonio Martínez</em>  </li>
+<li><strong>Curso / Asignatura:</strong> <em>Sistemas Embebidos</em>  </li>
+<li><strong>Fecha:</strong> <em>08/12/2025</em>  </li>
+<li><strong>Descripción breve:</strong> <em>Robot diferencial con dos motores y encoders, controlado por un TB6612FNG, que utiliza un sensor VL53L0X frontal para avanzar por el laberinto y girar al detectar un muro.</em></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Información del proyecto</p>
+<ul>
+<li><strong>Lenguaje:</strong> C (Pico SDK)  </li>
+<li><strong>MCU:</strong> Raspberry Pi Pico 2 (RP2040)  </li>
+<li><strong>Librerías principales:</strong>  </li>
+<li><code>pico/stdlib.h</code>  </li>
+<li><code>hardware/gpio.h</code>  </li>
+<li><code>hardware/pwm.h</code>  </li>
+<li><code>hardware/i2c.h</code>  </li>
+<li><code>tof.h</code> (driver del VL53L0X)  </li>
+<li><strong>Sensores:</strong>  </li>
+<li>1x VL53L0X (ToF) frontal, en bus I2C0  </li>
+<li>Encoders cuadratura en cada motor  </li>
+<li><strong>Actuadores:</strong>  </li>
+<li>2 motores DC (Pololu) con encoders  </li>
+<li>Puente H TB6612FNG  </li>
+<li><strong>Tipo de control:</strong>  </li>
+<li>Robot diferencial (dos ruedas motrices + rueda loca)  </li>
+<li>Control de velocidad con PWM  </li>
+<li>Corrección de trayectoria con encoders (funciones de prueba PD y P)</li>
+</ul>
+</div>
+<h3 id="material-utilizado">Material utilizado</h3>
+<ul>
+<li>1x Raspberry Pi Pico 2  </li>
+<li>1x Puente H TB6612FNG  </li>
+<li>2x Motores DC con encoder (Pololu u otros equivalentes)  </li>
+<li>1x Sensor de distancia VL53L0X (ToF)  </li>
+<li>1x Rueda loca  </li>
+<li>Batería (p. ej. 2S LiPo o 4x AA)  </li>
+<li>Cables, conectores y protoboard / PCB  </li>
+<li>PC con VS Code + CMake + Pico SDK  </li>
+</ul>
+<hr />
+<h2 id="2-objetivos">2) Objetivos</h2>
+<ul>
+<li>Implementar un <strong>robot diferencial</strong> utilizando un TB6612FNG y dos motores DC con encoders.  </li>
+<li>Leer <strong>encoders</strong> mediante interrupciones para medir el avance de cada rueda.  </li>
+<li>Leer un sensor <strong>VL53L0X</strong> por I2C para medir distancia frontal.  </li>
+<li>Implementar movimientos de alto nivel:</li>
+<li>Avanzar una cantidad de <strong>ticks</strong> fija.</li>
+<li>Girar aproximadamente <strong>90°</strong> a través de los encoders.</li>
+<li>Implementar una lógica básica de navegación:</li>
+<li>Avanzar mientras no haya muro cerca.</li>
+<li>Girar a la izquierda cuando el muro frontal está demasiado cerca.  </li>
+</ul>
+<p>Esta versión sirve como base para integrar posteriormente un <strong>algoritmo completo de resolución de laberintos</strong> (DFS, Flood Fill, etc.).</p>
+<hr />
+<h2 id="3-circuito">3) Circuito</h2>
+<p>El robot usa una <strong>PCB personalizada</strong> donde se conectan la Raspberry Pi Pico 2, el puente H TB6612FNG, los encoders de los motores, tres módulos de sensores IR y la etapa de alimentación desde una batería de 9 V.</p>
+<p><strong>circuito</strong>
+<img alt="Raspberry Pi Pico 2" src="../recursos/imgs/laberinto.png" />  </p>
+<h3 id="31-sensores-ir-izquierda-frente-y-derecha">3.1. Sensores IR (izquierda, frente y derecha)</h3>
+<p>En la parte superior de la PCB hay tres conectores:</p>
+<ul>
+<li><strong>IR izq</strong> (<code>TSW-106-07-S-S</code>)</li>
+<li><strong>IR adel</strong> (frontal)</li>
+<li><strong>IR derc</strong> (derecha)</li>
+</ul>
+<p>Cada conector lleva:</p>
+<ul>
+<li><strong>3V out</strong> (alimentación del módulo IR)</li>
+<li><strong>GND</strong></li>
+<li>1 o 2 líneas de señal hacia la Pico (según el módulo), etiquetadas como:</li>
+<li><code>gp3</code>, <code>gp4</code>, <code>gp5</code>, <code>gp14</code>, <code>gp15</code> (reservados para los IR)</li>
+</ul>
+<p>La idea es:</p>
+<ul>
+<li>Poder leer <strong>pared izquierda / derecha / frontal</strong> con sensores IR.</li>
+<li>Tener ya cableado el hardware, aunque en el código de esta primera versión solo se use el <strong>sensor frontal ToF</strong>.</li>
+</ul>
+<blockquote>
+<p>Esquemático sensores IR + Pico:<br />
+<code>![Sensores IR y Pico](../recursos/imgs/esquematico_ir_pico.png)</code></p>
+</blockquote>
+<h3 id="32-motores-encoders-y-puente-h-tb6612fng">3.2. Motores, encoders y puente H TB6612FNG</h3>
+<p>En el lado derecho de la PCB están los dos conectores de motor:</p>
+<ul>
+<li><strong>Motor izquierdo</strong> (<code>TSW-106-07-S-S</code>)</li>
+<li><code>M1 / M2</code>: terminales del motor</li>
+<li><code>C1 / C2</code>: canales del encoder (izquierda)</li>
+<li>
+<p><code>VCC</code> y <code>GND</code></p>
+</li>
+<li>
+<p><strong>Motor derecho</strong></p>
+</li>
+<li><code>M1 / M2</code>: terminales del motor</li>
+<li><code>C1 / C2</code>: canales del encoder (derecha)</li>
+<li><code>VCC</code> y <code>GND</code></li>
+</ul>
+<p>El puente H es un módulo <strong>ROB-14450 (TB6612FNG)</strong>. El mapeo contra la Pico 2 (según tu esquemático y código) queda:</p>
+<ul>
+<li><strong>PWM de velocidad</strong></li>
+<li><code>PWMA</code> → <code>gp6</code> → motor izquierdo  </li>
+<li>
+<p><code>PWMB</code> → <code>gp7</code> → motor derecho  </p>
+</li>
+<li>
+<p><strong>Dirección de motores</strong></p>
+</li>
+<li>Motor izquierdo:  <ul>
+<li><code>AIN1</code> → <code>gp9</code>  </li>
+<li><code>AIN2</code> → <code>gp10</code></li>
+</ul>
+</li>
+<li>
+<p>Motor derecho:  </p>
+<ul>
+<li><code>BIN1</code> → <code>gp11</code>  </li>
+<li><code>BIN2</code> → <code>gp12</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Standby</strong></p>
+</li>
+<li>
+<p><code>STBY</code> se lleva a un GPIO (gp8 + resistor) y se mantiene en <strong>alto</strong>, habilitando el driver.</p>
+</li>
+<li>
+<p><strong>Encoders</strong></p>
+</li>
+<li>Izquierda:<ul>
+<li><code>ENC_LA_PIN</code> → <code>gp18</code> (C1 izq)  </li>
+<li><code>ENC_LB_PIN</code> → <code>gp19</code> (C2 izq)</li>
+</ul>
+</li>
+<li>Derecha:<ul>
+<li><code>ENC_RA_PIN</code> → <code>gp16</code> (C1 der)  </li>
+<li><code>ENC_RB_PIN</code> → <code>gp17</code> (C2 der)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Esquemático motores + TB6612FNG:<br />
+<code>![Motores y puente H](../recursos/imgs/esquematico_motores_tb6612.png)</code></p>
+</blockquote>
+<h3 id="33-alimentacion">3.3. Alimentación</h3>
+<p>La PCB está pensada para alimentarse con una <strong>batería de 9 V</strong>:</p>
+<ol>
+<li>Conector <strong>“alimentación”</strong>: entra la batería (9 V y GND).</li>
+<li>Un <strong>switch</strong> en serie permite encender/apagar el robot.</li>
+<li>Después del switch hay un capacitor de filtrado y una resistencia serie pequeña.</li>
+<li>Un regulador <strong>LM1117-IMP-5.0</strong> baja la tensión de ~9 V a la tensión de lógica (<code>3v out</code> en el esquemático), que alimenta:</li>
+<li>La Raspberry Pi Pico 2 (a través de su pin de entrada de tensión).</li>
+<li>El puente H TB6612FNG (<code>VCC</code>).</li>
+<li>Los sensores IR y el resto de la lógica.</li>
+</ol>
+<p>Además hay un <strong>LED de encendido</strong> con su resistencia en serie para indicar que la placa está alimentada.</p>
+<blockquote>
+<p>Esquemático de alimentación:<br />
+<code>![Alimentación y regulador](../recursos/imgs/esquematico_alimentacion.png)</code></p>
+</blockquote>
+<h3 id="34-pcb-final">3.4. PCB final</h3>
+<p>La PCB tiene forma casi octagonal para adaptarse al contorno del robot.<br />
+En la vista de ruteo se distinguen:</p>
+<ul>
+<li>Conector de la Pico 2 en el centro-izquierda.</li>
+<li>Conectores de <strong>IR izq / IR adel / IR derc</strong> en el borde superior.</li>
+<li>Conectores de <strong>Motor izquierdo</strong> y <strong>Motor derecho</strong> a los lados.</li>
+<li>Zona de <strong>alimentación</strong> en la parte inferior (conector de batería + switch + regulador).</li>
+<li>Plano de GND y pistas de potencia un poco más gruesas para los motores.</li>
+</ul>
+<blockquote>
+<p>PCB enrutada del robot:<br />
+<code>![PCB robot laberinto](../recursos/imgs/pcb_robot_laberinto.png)</code></p>
+</blockquote>
+<h2 id="4-codigo">4) Código</h2>
+<h3 id="41-codigo-completo">4.1 Código completo</h3>
+<p>```c</p>
+<div class="language-text highlight"><pre><span></span><code>#include &lt;stdio.h&gt;
+#include &lt;stdint.h&gt;
+#include &lt;stdbool.h&gt;
+
+#include &quot;pico/stdlib.h&quot;
+#include &quot;hardware/gpio.h&quot;
+#include &quot;hardware/pwm.h&quot;
+#include &quot;hardware/i2c.h&quot;
+#include &quot;pico/binary_info.h&quot;
+#include &quot;tof.h&quot;
+
+
+//---------variables de control PID---------
+#define KP_PD   0.015f   // Ganancia proporcional (ajústala)
+#define KD_PD   0.01f    // Ganancia derivativa (ajústala)
+#define I2C_PORT i2c0
+
+#define XSHUT1 13 //adelante
+
+// ---------------- Pines TB6612FNG ----------------
+// Motor IZQUIERDO -&gt; Canal A
+#define AIN1_PIN   10    // AIN1
+#define AIN2_PIN   11    // AIN2
+#define PWMA_PIN   7     // PWMA (PWM)
+
+// Motor DERECHO -&gt; Canal B
+#define BIN1_PIN   8     // BIN1
+#define BIN2_PIN   9     // BIN2
+#define PWMB_PIN   6     // PWMB
+
+#define STBY_PIN   12    // STBY (standby, debe estar en 1)
+
+// ---------------- Encoders ----------------
+// Llanta IZQUIERDA
+#define ENC_LA_PIN   18   // C1 izquierda
+#define ENC_LB_PIN   19   // C2 izquierda
+
+// Llanta DERECHA
+#define ENC_RA_PIN   16   // C1 derecha
+#define ENC_RB_PIN   17   // C2 derecha
+
+// ---------------- Parámetros del robot (AJUSTAR) ----------------
+#define TICKS_GIRO_90   300   // VALOR DE EJEMPLO, CÁMBIALO DESPUÉS
+
+// ---------------- Variables globales encoder ----------------
+volatile int32_t encoder_left_count  = 0;
+volatile int32_t encoder_right_count = 0;
+
+// PWM
+static uint slice_left;
+static uint slice_right;
+static const uint16_t PWM_WRAP = 1000;  // resolución de PWM (0–1000)
+
+// Pequeña función abs para int32
+static inline int32_t i32_abs(int32_t x) {
+    return (x &gt;= 0) ? x : -x;
+}
+
+void motor_set_right(int16_t speed) {
+    if (speed &gt; 100)  speed = -100;
+    if (speed &lt; -100) speed = 100;
+
+    // Aquí invertimos el sentido respecto al izquierdo
+    if (speed &gt; 0) {
+        // Adelante (pero el motor está físicamente invertido)
+        gpio_put(BIN1_PIN, 0);
+        gpio_put(BIN2_PIN, 1);
+    } else if (speed &lt; 0) {
+        // Atrás
+        gpio_put(BIN1_PIN, 1);
+        gpio_put(BIN2_PIN, 0);
+    } else {
+        gpio_put(BIN1_PIN, 0);
+        gpio_put(BIN2_PIN, 0);
+    }
+
+    uint16_t mag = (speed &gt;= 0) ? (uint16_t)speed : (uint16_t)(-speed);
+    uint16_t duty = (uint16_t)((mag * PWM_WRAP) / 100);
+    pwm_set_gpio_level(PWMB_PIN, duty);
+}
+
+// Motor IZQUIERDO
+void motor_set_left(int16_t speed) {
+    if (speed &gt; 100)  speed = -100;
+    if (speed &lt; -100) speed = 100;
+
+    if (speed &gt; 0) {
+        gpio_put(AIN1_PIN, 1);
+        gpio_put(AIN2_PIN, 0);
+    } else if (speed &lt; 0) {
+        gpio_put(AIN1_PIN, 0);
+        gpio_put(AIN2_PIN, 1);
+    } else {
+        gpio_put(AIN1_PIN, 0);
+        gpio_put(AIN2_PIN, 0);
+    }
+
+    uint16_t mag = (speed &gt;= 0) ? (uint16_t)speed : (uint16_t)(-speed);
+    uint16_t duty = (uint16_t)((mag * PWM_WRAP) / 100);
+    pwm_set_gpio_level(PWMA_PIN, duty);
+}
+
+// Parar ambos motores
+void robot_parar(void) {
+    motor_set_left(0);
+    motor_set_right(0);
+}
+
+// Control PD para que el robot vaya recto usando los encoders
+void robot_prueba_recto_PD(int16_t base_speed, uint32_t duracion_ms, uint32_t paso_ms) {
+    encoder_left_count  = 0;
+    encoder_right_count = 0;
+
+    float e_prev = 0.0f;  // error anterior
+
+    uint32_t t = 0;
+    while (t &lt; duracion_ms) {
+        // Leemos los encoders
+        int32_t L = encoder_left_count;
+        int32_t R = encoder_right_count;
+
+        // Usamos magnitud (valor absoluto) para evitar problemas de signo
+        int32_t Lmag = (L &gt;= 0) ? L : -L;
+        int32_t Rmag = (R &gt;= 0) ? R : -R;
+
+        // Error: diferencia de distancias recorridas
+        float e  = (float)(Lmag - Rmag);
+        float de = e - e_prev;   // derivada discreta
+
+        // Ley de control PD
+        float u = KP_PD * e + KD_PD * de;
+
+        // Limitamos la corrección para que NO domine a base_speed
+        float max_u = base_speed * 0.3f;   // 30% de la velocidad base
+        if (u &gt;  max_u) u =  max_u;
+        if (u &lt; -max_u) u = -max_u;
+
+        // Calculamos velocidades
+        float sL = (float)base_speed - u;
+        float sR = (float)base_speed + u;
+
+        // Saturamos a [0, 100] para NO permitir reversa en esta prueba
+        if (sL &gt; 100.0f)  sL = 100.0f;
+        if (sL &lt; 0.0f)    sL = 0.0f;
+        if (sR &gt; 100.0f)  sR = 100.0f;
+        if (sR &lt; 0.0f)    sR = 0.0f;
+
+        int16_t speed_left  = (int16_t)sL;
+        int16_t speed_right = (int16_t)sR;
+
+        motor_set_left(speed_left);
+        motor_set_right(speed_right);
+
+        printf(&quot;t=%lu ms | L=%ld | R=%ld | e=%.1f | u=%.2f | sL=%d | sR=%d\n&quot;,
+            t, L, R, e, u, speed_left, speed_right);
+
+        e_prev = e;
+        sleep_ms(paso_ms);
+        t += paso_ms;
+    }
+
+    robot_parar();
+}
+
+// ---------------- ISR del encoder para DOS llantas ----------------
+void encoder_isr(uint gpio, uint32_t events) {
+    // Leemos siempre todos los canales
+    bool aL = gpio_get(ENC_LA_PIN);
+    bool bL = gpio_get(ENC_LB_PIN);
+    bool aR = gpio_get(ENC_RA_PIN);
+    bool bR = gpio_get(ENC_RB_PIN);
+
+    // ---- LLANTA IZQUIERDA ----
+    if (gpio == ENC_LA_PIN) {
+        if (aL == bL) {
+            encoder_left_count++;
+        } else {
+            encoder_left_count--;
+        }
+    } else if (gpio == ENC_LB_PIN) {
+        if (aL != bL) {
+            encoder_left_count++;
+        } else {
+            encoder_left_count--;
+        }
+    }
+
+    // ---- LLANTA DERECHA ----
+    else if (gpio == ENC_RA_PIN) {
+        if (aR == bR) {
+            encoder_right_count++;
+        } else {
+            encoder_right_count--;
+        }
+    } else if (gpio == ENC_RB_PIN) {
+        if (aR != bR) {
+            encoder_right_count++;
+        } else {
+            encoder_right_count--;
+        }
+    }
+}
+
+// ---------------- Funciones de alto nivel: robot ----------------
+
+// Avanzar usando ticks de la llanta izquierda
+void robot_adelante(int16_t base_speed, int32_t ticks_objetivo) {
+    encoder_left_count  = 0;
+    encoder_right_count = 0;
+
+    const float Kp = 0.1f;     // empieza pequeño
+    const int16_t MAX_CORR = 30;   // cuánto máx. puede corregir
+    const int16_t MIN_CMD  = 30;   // mínimo para que el motor venza fricción
+    const int16_t MAX_CMD  = 255;  // o lo que uses
+
+    motor_set_left(base_speed);
+    motor_set_right(base_speed);
+
+    while (1) {
+        int32_t ticks_L = encoder_left_count;
+        int32_t ticks_R = encoder_right_count;
+
+        int32_t prom = (i32_abs(ticks_L) + i32_abs(ticks_R)) / 2;
+        if (prom &gt;= ticks_objetivo) {
+            break;
+        }
+
+        // error = diferencia de avance entre ruedas
+        int32_t error = ticks_L - ticks_R;
+
+        // --- solo P, sin D ---
+        float corr_f = Kp * (float)error;
+        int16_t corr = (int16_t)corr_f;
+
+        // limitar corrección
+        if (corr &gt;  MAX_CORR) corr =  MAX_CORR;
+        if (corr &lt; -MAX_CORR) corr = -MAX_CORR;
+
+        int16_t left_cmd  = base_speed - corr;
+        int16_t right_cmd = base_speed + corr;
+
+        // NO permitir cambiar de sentido: comandos siempre positivos
+        if (left_cmd  &lt; MIN_CMD) left_cmd  = MIN_CMD;
+        if (right_cmd &lt; MIN_CMD) right_cmd = MIN_CMD;
+        if (left_cmd  &gt; MAX_CMD) left_cmd  = MAX_CMD;
+        if (right_cmd &gt; MAX_CMD) right_cmd = MAX_CMD;
+
+        motor_set_left(left_cmd);
+        motor_set_right(right_cmd);
+
+        sleep_ms(5);
+    }
+
+    robot_parar();
+}
+
+void robot_adelante_basic(int16_t speed, int32_t ticks_objetivo) {
+    encoder_left_count  = 0;
+    encoder_right_count = 0;
+
+    motor_set_left(speed);
+    motor_set_right(speed);
+
+    while (i32_abs(encoder_left_count) &lt; ticks_objetivo) {
+        tight_loop_contents();
+    }
+
+    robot_parar();
+}
+
+void turnL(int16_t base_speed, int32_t ticks_objetivo) {
+    encoder_left_count  = 0;
+    encoder_right_count = 0;
+
+    const float Kp = 0.1f;     // empieza pequeño
+    const int16_t MAX_CORR = 30;   // cuánto máx. puede corregir
+    const int16_t MIN_CMD  = 30;   // mínimo para que el motor venza fricción
+    const int16_t MAX_CMD  = 255;  // o lo que uses
+
+    motor_set_left(-base_speed);
+    motor_set_right(base_speed);
+
+    while (1) {
+        int32_t ticks_L = encoder_left_count;
+        int32_t ticks_R = encoder_right_count;
+
+        int32_t prom = (i32_abs(ticks_L) + i32_abs(ticks_R)) / 2;
+        if (prom &gt;= ticks_objetivo) {
+            break;
+        }
+
+        // error = diferencia de avance entre ruedas
+        int32_t error = ticks_L - ticks_R;
+
+        // --- solo P, sin D ---
+        float corr_f = Kp * (float)error;
+        int16_t corr = (int16_t)corr_f;
+
+        // limitar corrección
+        if (corr &gt;  MAX_CORR) corr =  MAX_CORR;
+        if (corr &lt; -MAX_CORR) corr = -MAX_CORR;
+
+        int16_t left_cmd  = base_speed - corr;
+        int16_t right_cmd = base_speed + corr;
+
+        // NO permitir cambiar de sentido: comandos siempre positivos
+        if (left_cmd  &lt; MIN_CMD) left_cmd  = MIN_CMD;
+        if (right_cmd &lt; MIN_CMD) right_cmd = MIN_CMD;
+        if (left_cmd  &gt; MAX_CMD) left_cmd  = MAX_CMD;
+        if (right_cmd &gt; MAX_CMD) right_cmd = MAX_CMD;
+
+        motor_set_left(left_cmd);
+        motor_set_right(right_cmd);
+
+        sleep_ms(5);
+    }
+
+    robot_parar();
+}
+
+// Giro de ~90° a la DERECHA
+void robot_giro_90_derecha(int16_t speed) {
+    encoder_left_count  = 0;
+    encoder_right_count = 0;
+
+    motor_set_left(speed);
+    motor_set_right(-speed);
+
+    while (i32_abs(encoder_left_count) &lt; TICKS_GIRO_90) {
+        tight_loop_contents();
+    }
+
+    robot_parar();
+}
+
+// Giro de ~90° a la IZQUIERDA
+void robot_giro_90_izquierda(int16_t speed) {
+    encoder_left_count  = 0;
+    encoder_right_count = 0;
+
+    motor_set_left(-speed);
+    motor_set_right(speed);
+
+    while (i32_abs(encoder_left_count) &lt; TICKS_GIRO_90) {
+        tight_loop_contents();
+    }
+
+    robot_parar();
+}
+
+// Prueba: ir recto cierto tiempo y ver pulsos de ambas ruedas
+void robot_prueba_recto(int16_t speed, uint32_t duracion_ms, uint32_t paso_ms) {
+    encoder_left_count  = 0;
+    encoder_right_count = 0;
+
+    motor_set_left(speed);
+    motor_set_right(speed);
+
+    uint32_t t = 0;
+    while (t &lt; duracion_ms) {
+        printf(&quot;t = %lu ms | L = %ld | R = %ld | diff = %ld\n&quot;,
+            t,
+            encoder_left_count,
+            encoder_right_count,
+            encoder_left_count - encoder_right_count);
+        sleep_ms(paso_ms);
+        t += paso_ms;
+    }
+
+    robot_parar();
+}
+
+// ---------------- main ----------------
+int main() {
+    stdio_init_all();
+    sleep_ms(4000);
+
+    // Inicializar I2C para el VL53L0X
+    i2c_init(I2C_PORT, 400 * 1000);
+    gpio_set_function(PICO_DEFAULT_I2C_SDA_PIN, GPIO_FUNC_I2C);
+    gpio_set_function(PICO_DEFAULT_I2C_SCL_PIN, GPIO_FUNC_I2C);
+    gpio_pull_up(PICO_DEFAULT_I2C_SDA_PIN);
+    gpio_pull_up(PICO_DEFAULT_I2C_SCL_PIN);
+    bi_decl(bi_2pins_with_func(PICO_DEFAULT_I2C_SDA_PIN,
+                            PICO_DEFAULT_I2C_SCL_PIN,
+                            GPIO_FUNC_I2C));
+
+    // XSHUT del VL53L0X
+    gpio_init(XSHUT1);
+    gpio_set_dir(XSHUT1, GPIO_OUT);
+    gpio_put(XSHUT1, 0);
+    sleep_ms(50);
+
+    int ok;
+    gpio_put(XSHUT1, 1);
+    sleep_ms(10);
+    ok = tofInit(0, 0x29, 1000);
+    if (ok != 1) {
+        printf(&quot;ERROR iniciando sensor 1 (ret=%d)\n&quot;, ok);
+        while (1) tight_loop_contents();
+    }
+
+    sleep_ms(500);
+
+    //=========================
+    // Configuración de motores
+    //=========================
+
+    // Motor izquierdo
+    gpio_init(AIN1_PIN);
+    gpio_set_dir(AIN1_PIN, GPIO_OUT);
+    gpio_put(AIN1_PIN, 0);
+
+    gpio_init(AIN2_PIN);
+    gpio_set_dir(AIN2_PIN, GPIO_OUT);
+    gpio_put(AIN2_PIN, 0);
+
+    // Motor derecho
+    gpio_init(BIN1_PIN);
+    gpio_set_dir(BIN1_PIN, GPIO_OUT);
+    gpio_put(BIN1_PIN, 0);
+
+    gpio_init(BIN2_PIN);
+    gpio_set_dir(BIN2_PIN, GPIO_OUT);
+    gpio_put(BIN2_PIN, 0);
+
+    // STBY en alto para salir de standby
+    gpio_init(STBY_PIN);
+    gpio_set_dir(STBY_PIN, GPIO_OUT);
+    gpio_put(STBY_PIN, 1);
+
+    // -------- Configuración PWM --------
+    // Izquierdo
+    gpio_set_function(PWMA_PIN, GPIO_FUNC_PWM);
+    slice_left = pwm_gpio_to_slice_num(PWMA_PIN);
+    pwm_set_wrap(slice_left, PWM_WRAP);
+    pwm_set_clkdiv(slice_left, 100.0f);   // ~1.25 kHz
+    pwm_set_gpio_level(PWMA_PIN, 0);
+    pwm_set_enabled(slice_left, true);
+
+    // Derecho
+    gpio_set_function(PWMB_PIN, GPIO_FUNC_PWM);
+    slice_right = pwm_gpio_to_slice_num(PWMB_PIN);
+    pwm_set_wrap(slice_right, PWM_WRAP);
+    pwm_set_clkdiv(slice_right, 100.0f);
+    pwm_set_gpio_level(PWMB_PIN, 0);
+    pwm_set_enabled(slice_right, true);
+
+    // -------- Configuración encoders --------
+    // Izquierdo
+    gpio_init(ENC_LA_PIN);
+    gpio_set_dir(ENC_LA_PIN, GPIO_IN);
+    gpio_pull_up(ENC_LA_PIN);
+
+    gpio_init(ENC_LB_PIN);
+    gpio_set_dir(ENC_LB_PIN, GPIO_IN);
+    gpio_pull_up(ENC_LB_PIN);
+
+    // Derecho
+    gpio_init(ENC_RA_PIN);
+    gpio_set_dir(ENC_RA_PIN, GPIO_IN);
+    gpio_pull_up(ENC_RA_PIN);
+
+    gpio_init(ENC_RB_PIN);
+    gpio_set_dir(ENC_RB_PIN, GPIO_IN);
+    gpio_pull_up(ENC_RB_PIN);
+
+    // Un solo callback para todos los pines de encoder
+    gpio_set_irq_enabled_with_callback(
+        ENC_LA_PIN,
+        GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL,
+        true,
+        &amp;encoder_isr
+    );
+    gpio_set_irq_enabled(ENC_LB_PIN, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true);
+    gpio_set_irq_enabled(ENC_RA_PIN, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true);
+    gpio_set_irq_enabled(ENC_RB_PIN, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true);
+
+    sleep_ms(1000);
+    printf(&quot;Inicio robot con TB6612 + encoders izquierda/derecha\n&quot;);
+
+    const int LIMITE_FRONT = 120;    // mm (distancia mínima al frente)
+    const int16_t VEL_BASE = -20;    // velocidad para avanzar (ajustada a cableado real)
+    const int32_t TICKS_PASO = 80;   // cuántos ticks avanza en cada &quot;paso&quot;
+
+    while (true) {
+        // ---------- 4.1 Leer sensor frontal ----------
+        vl53l0x_setAddress(0x29);   // frontal
+        int d_front = tofReadDistance();
+
+        printf(&quot;F=%4d mm\n&quot;, d_front);
+
+        // Si la lectura del frontal es inválida (&lt;0), trátala como &quot;muy lejos&quot;
+        if (d_front &lt; 0) d_front = 2000;
+
+        // ---------- 4.2 Lógica de movimiento ----------
+        if (d_front &gt; LIMITE_FRONT) {
+            // Hay espacio al frente -&gt; dar un pasito recto
+            robot_adelante_basic(VEL_BASE, TICKS_PASO);
+        } else {
+            // Demasiado cerca del muro frontal
+            robot_parar();
+            robot_giro_90_izquierda(VEL_BASE);
+        }
+    }
+
+    return 0;
+}
+</code></pre></div>
+<h2 id="5-explicacion-del-programa">5) Explicación del programa</h2>
+<h3 id="51-mapeo-de-pines-y-modulos">5.1. Mapeo de pines y módulos</h3>
+<p><strong>Motores (TB6612FNG):</strong></p>
+<p>Dos funciones principales:</p>
+<ul>
+<li><code>motor_set_left(int16_t speed)</code></li>
+<li><code>motor_set_right(int16_t speed)</code></li>
+</ul>
+<p>Reciben una velocidad en el rango aproximado <code>[-100, 100]</code> y:</p>
+<ul>
+<li>Ajustan la <strong>dirección</strong> (pines <code>AINx</code> / <code>BINx</code>).</li>
+<li>Ajustan el <strong>duty cycle</strong> del PWM (pines <code>PWMA</code> / <code>PWMB</code>).</li>
+</ul>
+<p><strong>Encoders:</strong></p>
+<ul>
+<li>Cada rueda tiene dos canales (A y B).</li>
+<li>La rutina <code>encoder_isr()</code> se registra como callback para los flancos de todos los pines de encoder.</li>
+<li>En función del estado relativo de A y B se incrementa o decrementa:</li>
+<li><code>encoder_left_count</code></li>
+<li><code>encoder_right_count</code></li>
+</ul>
+<p><strong>Sensor VL53L0X:</strong></p>
+<ul>
+<li>Se inicializa por I2C en la dirección <code>0x29</code> usando <code>tofInit()</code>.</li>
+<li>En el bucle principal se usa <code>tofReadDistance()</code> para obtener la distancia frontal en mm.</li>
+</ul>
+<hr />
+<h3 id="52-funciones-de-movimiento">5.2. Funciones de movimiento</h3>
+<ul>
+<li>
+<p><code>robot_adelante_basic(int16_t speed, int32_t ticks_objetivo)</code><br />
+  Avanza con una velocidad fija hasta que el encoder izquierdo alcanza <code>ticks_objetivo</code>.</p>
+</li>
+<li>
+<p><code>robot_adelante(...)</code><br />
+  Similar, pero con una corrección <strong>proporcional</strong> basada en la diferencia de ticks entre ruedas para mantener el rumbo.</p>
+</li>
+<li>
+<p><code>robot_prueba_recto_PD(...)</code><br />
+  Implementa un control <strong>PD</strong> sobre la diferencia de encoders para que el robot avance lo más recto posible, ajustando dinámicamente <code>sL</code> y <code>sR</code>.</p>
+</li>
+<li>
+<p><code>robot_giro_90_izquierda(int16_t speed)</code> y <code>robot_giro_90_derecha(int16_t speed)</code><br />
+  Giran el robot sobre su centro (una rueda hacia adelante y la otra hacia atrás) hasta alcanzar <code>TICKS_GIRO_90</code> en el encoder, lo que se calibra para aproximar un giro de 90°.</p>
+</li>
+</ul>
+<hr />
+<h3 id="53-bucle-principal-logica-de-navegacion">5.3. Bucle principal: lógica de navegación</h3>
+<p>En <code>main()</code> se ejecuta un bucle infinito:</p>
+<ol>
+<li><strong>Lectura del sensor frontal:</strong></li>
+<li>Se obtiene <code>d_front = tofReadDistance();</code>.</li>
+<li>
+<p>Si <code>d_front &lt; 0</code>, se asume que está muy lejos o hubo error de lectura y se reemplaza por <code>2000</code> mm.</p>
+</li>
+<li>
+<p><strong>Decisión de movimiento:</strong></p>
+</li>
+<li>Si <code>d_front &gt; LIMITE_FRONT</code> (por ejemplo, 120 mm):  <ul>
+<li>No hay muro cercano → se llama a <code>robot_adelante_basic(VEL_BASE, TICKS_PASO);</code>, es decir, se avanza una cantidad de ticks fija.</li>
+</ul>
+</li>
+<li>Si <code>d_front &lt;= LIMITE_FRONT</code>:  <ul>
+<li>Hay un muro muy cerca → se detiene el robot (<code>robot_parar()</code>) y se realiza un giro de 90° a la izquierda (<code>robot_giro_90_izquierda(VEL_BASE);</code>).</li>
+</ul>
+</li>
+</ol>
+<p>Esta lógica implementa una <strong>navegación reactiva simple</strong> que evita chocar con el muro frontal y genera un comportamiento tipo “seguir girando a la izquierda” cuando encuentra obstáculos.</p>
+<hr />
+<h2 id="6-consideraciones-de-hardware">6) Consideraciones de hardware</h2>
+<p><strong>Calibración de <code>TICKS_GIRO_90</code>:</strong><br />
+El valor <code>#define TICKS_GIRO_90 300</code> es aproximado. Debe calibrarse empíricamente haciendo girar el robot sobre sí mismo y ajustando hasta obtener un giro de ~90°.</p>
+<p><strong>Velocidad y signo de <code>VEL_BASE</code>:</strong><br />
+En el código se usa <code>VEL_BASE = -20</code>. Esto se debe a la forma en que están conectados los motores y a cómo se definieron los sentidos en <code>motor_set_left()</code> y <code>motor_set_right()</code>.<br />
+Si al probar el robot este avanza hacia atrás, bastará con cambiar el signo o la convención de pines.</p>
+<p><strong>Alimentación:</strong></p>
+<ul>
+<li>Es recomendable usar <strong>alimentación separada</strong> para motores y lógica (por ejemplo, LiPo para motores y regulador a 5 V / 3.3 V para la Pico).</li>
+<li>Siempre unir las <strong>tierras (GND)</strong>.</li>
+</ul>
+<p><strong>Ruido de motores:</strong><br />
+Los motores pueden introducir ruido en la alimentación y afectar el I2C o incluso causar resets. Es recomendable:</p>
+<ul>
+<li>Colocar capacitores de <strong>desacople</strong> cerca de la Pico y del TB6612.</li>
+<li>Mantener los cables de señales lo más cortos posible.</li>
+</ul>
+<p><strong>Montaje del sensor VL53L0X:</strong><br />
+D</p>
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+  <iframe
+    src="https://www.youtube.com/embed/dFpt2ZIkJl8"
+    title="YouTube video"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;">
+  </iframe>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "content.tooltips"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

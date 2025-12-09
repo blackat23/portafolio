@@ -1,0 +1,1646 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../uart/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>-Control de Servomotor - Portafolio de Antonio Martínez</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.2/css/all.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#control-de-servomotor-con-lista-de-angulos-y-3-modos-raspberry-pi-pico-pico-2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Portafolio de Antonio Martínez" class="md-header__button md-logo" aria-label="Portafolio de Antonio Martínez" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Portafolio de Antonio Martínez
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              -Control de Servomotor
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Portafolio de Antonio Martínez" class="md-nav__button md-logo" aria-label="Portafolio de Antonio Martínez" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Portafolio de Antonio Martínez
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ejemplo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ejemplo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../laberinto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Laberinto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../controladores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    microcontroladores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../rana/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proyecto rana
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../analisis_cafeteras/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Análisis sobre las cafeteras de cápsulas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raspberry Pi Pico 2
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Raspberry Pi Pico 2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sumador/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Contador Binario de 4 Bits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../barrido/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Barrido de LEDs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pong/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Ping Pongs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../inputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Inputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../secuencia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Secuencia controlada
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_6" id="__nav_7_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Temporizadores
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    -Temporizadores
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../temporizadores/temporizadores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -control de LEDs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../temporizadores/comparativa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -comparativas de código
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_7" id="__nav_7_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Control con PWM
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    -Control con PWM
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PWM/control_pwm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Canción con pym
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PWM/pwm_motor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Control Motor con PWM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PWM/seno_pwm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Generador de señal con pwm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7_8" id="__nav_7_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Comunicación UART
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    -Comunicación UART
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Comunicación UART
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Control de Servomotor
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    -Control de Servomotor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) Resumen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1) Resumen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#material-utilizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Material utilizado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-objetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Objetivos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-circuito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Circuito
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-codigo-referencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) Código (referencia)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-explicacion-del-programa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Explicación del programa
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5) Explicación del programa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-definiciones-y-mapeo-de-pines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        a) Definiciones y mapeo de pines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-pwm-para-servomotor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        b) PWM para servomotor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-estructuras-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        c) Estructuras de datos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-maquina-de-estados-modos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        d) Máquina de estados (modos)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-video-demostracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6) Video Demostracion:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) Resumen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1) Resumen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#material-utilizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Material utilizado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-objetivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Objetivos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-circuito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Circuito
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-codigo-referencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) Código (referencia)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-explicacion-del-programa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Explicación del programa
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5) Explicación del programa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-definiciones-y-mapeo-de-pines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        a) Definiciones y mapeo de pines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-pwm-para-servomotor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        b) PWM para servomotor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-estructuras-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        c) Estructuras de datos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-maquina-de-estados-modos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        d) Máquina de estados (modos)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-video-demostracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6) Video Demostracion:
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="control-de-servomotor-con-lista-de-angulos-y-3-modos-raspberry-pi-pico-pico-2">Control de Servomotor con Lista de Ángulos y 3 Modos (Raspberry Pi Pico / Pico 2)</h1>
+<blockquote>
+<p>Programa para <strong>grabar</strong>, <strong>reproducir</strong> y <strong>navegar</strong> una lista de ángulos (0–180°) para un <strong>servomotor</strong> usando PWM en el RP2040.<br />
+La interfaz se realiza por <strong>terminal USB</strong> (stdio), <strong>botones</strong> y <strong>UART0</strong> configurado (listo para depuración/expansión).</p>
+</blockquote>
+<hr />
+<h2 id="1-resumen">1) Resumen</h2>
+<ul>
+<li><strong>Nombre del proyecto:</strong> <em>Servo List Runner (3 modos)</em>  </li>
+<li><strong>Autor:</strong> <em>Antonio Martínez</em>  </li>
+<li><strong>Curso / Asignatura:</strong> <em>Sistemas Embebidos</em>  </li>
+<li><strong>Fecha:</strong> <em>22/10/2025</em>  </li>
+<li><strong>Descripción breve:</strong> Control de servo por PWM a ~50 Hz; comandos por consola para llenar una lista de ángulos y dos botones para navegar entre elementos.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Información del proyecto</p>
+<ul>
+<li><strong>Lenguaje:</strong> C++ (Pico SDK, usa <code>std::string</code>)</li>
+<li><strong>MCU:</strong> Raspberry Pi Pico / Pico 2 (RP2040)</li>
+<li><strong>Librerías:</strong> <code>pico/stdlib.h</code>, <code>hardware/pwm.h</code>, <code>hardware/uart.h</code>, <code>&lt;string&gt;</code>, <code>stdio</code></li>
+<li><strong>Estrategia general:</strong></li>
+<li><strong>Modo 0 (Escritura):</strong> desde la consola, comando <code>Escribir,</code> seguido de ángulos separados por comas y terminados con <code>;</code> o <code>Enter</code>.  </li>
+<li><strong>Modo 1 (Lectura):</strong> recorre y mueve el servo por todos los ángulos almacenados, con pausa visible.  </li>
+<li><strong>Modo 2 (Navegación):</strong> mueve el servo <strong>manualmente</strong> por la lista con <strong>btn_next</strong> / <strong>btn_prev</strong>.  </li>
+<li><strong>btn_mode:</strong> interrupción para alternar de <strong>0 → 1 → 2 → 0</strong> (con mensaje por <code>printf</code>).</li>
+</ul>
+</div>
+<h3 id="material-utilizado">Material utilizado</h3>
+<ul>
+<li>Raspberry Pi Pico / Pico 2  </li>
+<li>1 <strong>servomotor</strong> (estándar) conectado a <strong>GPIO 15</strong> (señal), Vcc 5 V (o 3.3 V según servo) y GND común  </li>
+<li>3 <strong>botones</strong> (NO) con <strong>pull-up interno</strong>:  </li>
+<li><code>btn_mode</code> → <strong>GPIO 16</strong> (cambio de modo)  </li>
+<li><code>btn_next</code> → <strong>GPIO 17</strong> (siguiente)  </li>
+<li><code>btn_prev</code> → <strong>GPIO 18</strong> (anterior)  </li>
+<li>Fuente y cableado adecuados  </li>
+<li>PC con Pico SDK (compilación CMake)</li>
+</ul>
+<hr />
+<h2 id="2-objetivos">2) Objetivos</h2>
+<ul>
+<li>Configurar <strong>PWM</strong> en el RP2040 para generar pulsos de <strong>1–2 ms</strong> dentro de un periodo de <strong>20 ms</strong> (~50 Hz) para servos.  </li>
+<li>Implementar una <strong>lista de ángulos</strong> con <strong>validación (0–180)</strong>.  </li>
+<li>Diseñar <strong>tres modos de operación</strong> con cambio por <strong>interrupción GPIO</strong>.  </li>
+<li>Practicar <strong>parsing de comandos</strong> vía consola y <strong>navegación por botones</strong> con detección de flanco.</li>
+</ul>
+<hr />
+<h2 id="3-circuito">3) Circuito</h2>
+<ul>
+<li><strong>Servo:</strong> señal en <strong>GPIO 15</strong>, GND común con el Pico, alimentación del servo acorde a su especificación (idealmente fuente separada con tierras comunes).  </li>
+<li><strong>Botones:</strong> <code>btn_mode=GP16</code>, <code>btn_next=GP17</code>, <code>btn_prev=GP18</code> → configurar como entrada con <code>gpio_pull_up()</code>. El otro terminal de cada botón a <strong>GND</strong>.  </li>
+<li><strong>UART0 (para depuración/expansión):</strong> <code>TX=GP0</code>, <code>RX=GP1</code> (cruzado si conectas a otro dispositivo).</li>
+</ul>
+<blockquote>
+<p>Con <strong>pull-up</strong>, el botón en reposo lee <strong>1</strong> y al presionar baja a <strong>0</strong>. En este proyecto, <code>btn_mode</code> usa <strong>IRQ por flanco de bajada</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="4-codigo-referencia">4) Código (referencia)</h2>
+<div class="language-text highlight"><pre><span></span><code>#include &quot;pico/stdlib.h&quot;
+#include &quot;hardware/uart.h&quot;
+#include &lt;stdio.h&gt;
+#include &lt;string&gt;
+#include &quot;hardware/pwm.h&quot;
+#define UART_ID uart0
+#define BAUD_RATE 115200
+#define TX_PIN 0
+#define RX_PIN 1
+#define btn_mode 16
+#define btn_next 17
+#define btn_prev 18
+#define PWM_PIN 0
+#define SERVO_PIN 15
+using namespace std;
+#define list 10
+
+volatile int programa = 0;
+
+uint16_t angle_to_pwm(float angle) {
+    float pulse_ms = 1.0f + (angle / 180.0f);   // 1.0 → 2.0 ms
+    float duty = (pulse_ms / 20.0f) * 39062.0f; // 20 ms periodo total
+    return (uint16_t)duty;
+}
+
+// --- Rutina de interrupción ---
+static void button_isr(uint gpio, uint32_t events) {
+    if (gpio == btn_mode &amp;&amp; (events &amp; GPIO_IRQ_EDGE_FALL)) { // flanco de bajada (presionado)
+        programa++;
+        if (programa &gt; 2) { programa = 0; }
+        if (programa == 0)      printf(&quot;Modo de Escritura Activado\n&quot;);
+        else if (programa == 1) printf(&quot;Modo de Lectura Activado\n&quot;);
+        else if (programa == 2) printf(&quot;Modo de Navegación Activado\n&quot;);
+        sleep_ms(500); // (anti-rebote básico, ojo: dentro de ISR)
+    }
+}
+
+int main() {
+    int pos = 0;
+    stdio_init_all();
+    uart_init(UART_ID, BAUD_RATE);
+    uart_set_format(UART_ID, 8, 1, UART_PARITY_NONE);
+
+    gpio_set_function(SERVO_PIN, GPIO_FUNC_PWM);
+    uint slice = pwm_gpio_to_slice_num(SERVO_PIN);
+    pwm_set_clkdiv(slice, 64.0f);
+    pwm_set_wrap(slice, 39062);
+    pwm_set_enabled(slice, true);
+
+    int next1 = 0;
+    int prev1 = 0;
+
+    // --- Configuración de botones ---
+    gpio_init(btn_mode); gpio_set_dir(btn_mode, GPIO_IN); gpio_pull_up(btn_mode);
+    gpio_init(btn_next); gpio_set_dir(btn_next, GPIO_IN); gpio_pull_up(btn_next);
+    gpio_init(btn_prev); gpio_set_dir(btn_prev, GPIO_IN); gpio_pull_up(btn_prev);
+
+    // --- Interrupción ---
+    gpio_set_irq_enabled_with_callback(btn_mode, GPIO_IRQ_EDGE_FALL, true, &amp;button_isr);
+
+    string p1 = &quot;&quot;;
+    int lista[list] = {720,720,720,720,720,720,720,720,720,720}; // 720 = vacío
+    int i = -1;
+
+    while (true) {
+        int pos = 0;
+
+        if (programa == 0) { // --- Escritura ---
+            int ch = getchar_timeout_us(0);
+            if (ch != PICO_ERROR_TIMEOUT) {
+                if (ch == &#39;,&#39;) {
+                    if (p1 == &quot;Escribir&quot; || p1 == &quot;write&quot; || p1 == &quot;WRITE&quot; ||
+                        p1 == &quot;escribir&quot; || p1 == &quot;Write&quot; || p1 == &quot;ESCRIBIR&quot;) {
+                        p1 = &quot;&quot;;
+                        int contador = 0;
+                        for(int k=0;k&lt;list;k++) if (lista[k]!=720) contador++;
+                        if (contador == list) {
+                            printf(&quot;Lista llena, no se pueden agregar más elementos.\n&quot;);
+                            p1 = &quot;&quot;;
+                            continue;
+                        } else {
+                            i++;
+                            while (ch != &#39;;&#39; &amp;&amp; ch != &#39;\n&#39;) {
+                                ch = getchar_timeout_us(0);
+                                if (ch != PICO_ERROR_TIMEOUT) {
+                                    if (ch == &#39;,&#39;) {
+                                        printf(&quot;Eco: %s\n&quot;, p1.c_str());
+                                        if(stoi(p1)&gt;180 || stoi(p1)&lt;0){
+                                            printf(&quot;Valor fuera de rango (0-180).\n&quot;);
+                                            i--;
+                                        } else {
+                                            lista[i] = stoi(p1);
+                                            i++;
+                                            p1 = &quot;&quot;;
+                                        }
+                                    } else if (ch == &#39;;&#39; || ch == &#39;\n&#39;) {
+                                        if(stoi(p1)&gt;180 || stoi(p1)&lt;0){
+                                            printf(&quot;Valor fuera de rango (0-180).\n&quot;);
+                                            i--;
+                                        } else {
+                                            lista[i] = stoi(p1);
+                                            p1 = &quot;&quot;;
+                                        }
+                                    } else {
+                                        p1 += (char)ch;
+                                    }
+                                    // imprimir lista actual
+                                    printf(&quot;Lista: &quot;);
+                                    for (int k=0;k&lt;=i;++k){ printf(&quot;%d%s&quot;, lista[k], (k+1&lt;=i)?&quot;, &quot;:&quot;&quot;); }
+                                    printf(&quot;\n&quot;);
+                                }
+                            }
+                        }
+                    } else if (p1 == &quot;Remplazar&quot; || p1 == &quot;replace&quot; || p1 == &quot;REPLACE&quot; ||
+                            p1 == &quot;remplazar&quot; || p1 == &quot;REMPLAZAR&quot;) {
+                        p1 = &quot;&quot;; // (reservado para extensión)
+                    }
+                }
+
+                if (ch == &#39;;&#39; || ch == &#39;\n&#39;) {
+                    if (p1 == &quot;Borrar&quot; || p1 == &quot;delete&quot; || p1 == &quot;DELETE&quot; ||
+                        p1 == &quot;borrar&quot; || p1 == &quot;BORRAR&quot;) {
+                        for (int k=0;k&lt;list;k++) lista[k]=720;
+                        i = -1;
+                        printf(&quot;Ok, Lista borrada\n&quot;);
+                    }
+                    p1 = &quot;&quot;;
+                } else {
+                    p1 += (char)ch;
+                }
+            }
+        } 
+        else if (programa == 1) { // --- Lectura secuencial ---
+            while(programa == 1){
+                int contador = 0;
+                for(int k=0;k&lt;list;k++) if (lista[k]!=720) contador++;
+                if (contador == 0) {
+                    printf(&quot;La lista está vacía. Cambie al modo de escritura para agregar elementos.\n&quot;);
+                    sleep_ms(1500);
+                } else {
+                    int j = 0;
+                    while(programa == 1 &amp;&amp; j &lt; contador){
+                        printf(&quot;posición: %d , valor: %d\n&quot;, j, lista[j]);
+                        pwm_set_gpio_level(SERVO_PIN, angle_to_pwm(lista[j]));
+                        printf(&quot;Ángulo: %.1f°\n&quot;, lista[j]);
+                        sleep_ms(1500);
+                        j++;
+                    }
+                }
+            }          
+        } 
+        else if (programa == 2) { // --- Navegación manual ---
+            while (programa == 2) {
+                if (lista[pos] == 720) pos--;
+                int contador = 0;
+                for(int k=0;k&lt;list;k++) if (lista[k]!=720) contador++;
+
+                // botón siguiente (detección de flanco)
+                if (next1 == 0 &amp;&amp; gpio_get(btn_next) == 1){
+                    if (contador == 0) {
+                        printf(&quot;Lista Vacia, no se puede avanzar.\n&quot;);
+                        sleep_ms(100);
+                    } else {
+                        pos++;
+                        printf(&quot;siguiente \n&quot;);
+                        if (lista[pos] == 720) { printf(&quot;Valor no válido, regresando a %d\n&quot;, pos-1); pos--; }
+                        if (pos == list) pos = 0;
+                        printf(&quot;posición: %d , valor: %d\n&quot;, pos, lista[pos]);
+                        pwm_set_gpio_level(SERVO_PIN, angle_to_pwm(lista[pos]));
+                        printf(&quot;Ángulo: %.1f°\n&quot;, lista[pos]);
+                        sleep_ms(200);
+                    }
+                } 
+                next1 = gpio_get(btn_next);
+
+                // botón anterior (detección de flanco)
+                if (prev1 == 0 &amp;&amp; gpio_get(btn_prev) == 1) {
+                    if (contador == 0) {
+                        printf(&quot;Lista Vacia, no se puede avanzar.\n&quot;);
+                        sleep_ms(100);
+                    } else {
+                        pos--;
+                        printf(&quot;anterior \n&quot;);
+                        if (pos == -1) { printf(&quot;Valor no válido, regresando a %d\n&quot;, pos+1); pos++; }
+                        if (pos == list) pos = 0;
+                        printf(&quot;posición: %d , valor: %d\n&quot;, pos, lista[pos]);
+                        pwm_set_gpio_level(SERVO_PIN, angle_to_pwm(lista[pos]));
+                        printf(&quot;Ángulo: %.1f°\n&quot;, lista[pos]);
+                        sleep_ms(200);
+                    }
+                }
+                prev1 = gpio_get(btn_prev);
+            }
+        }
+    }
+    return 0;
+}
+</code></pre></div>
+<h2 id="5-explicacion-del-programa">5) Explicación del programa</h2>
+<h3 id="a-definiciones-y-mapeo-de-pines">a) Definiciones y mapeo de pines</h3>
+<ul>
+<li><strong>Servo PWM:</strong> <code>SERVO_PIN = GP15</code> (función PWM)</li>
+<li><strong>Botones:</strong> <code>btn_mode = GP16</code>, <code>btn_next = GP17</code>, <code>btn_prev = GP18</code> con <strong>pull-up</strong></li>
+<li><strong>UART0:</strong> <code>TX = GP0</code>, <code>RX = GP1</code>, <code>BAUD_RATE = 115200</code>, formato <strong>8N1</strong></li>
+</ul>
+<h3 id="b-pwm-para-servomotor">b) PWM para servomotor</h3>
+<p>Se configura el <em>slice</em> correspondiente a <strong>GP15</strong> con:
+- <code>clkdiv = 64.0f</code>
+- <code>wrap = 39062</code> → periodo ≈ <strong>20 ms</strong> (<strong>50 Hz</strong>)</p>
+<p><code>angle_to_pwm(angle)</code> mapea <strong>0–180°</strong> a <strong>1.0–2.0 ms</strong> de pulso:
+- <code>pulse_ms = 1.0 + angle/180.0</code>
+- <code>duty = (pulse_ms / 20.0) * 39062</code></p>
+<h3 id="c-estructuras-de-datos">c) Estructuras de datos</h3>
+<ul>
+<li><code>lista[10]</code> almacena hasta <strong>10 ángulos</strong> (enteros).</li>
+<li><strong>Marcador de vacío:</strong> <code>720</code>.</li>
+<li>Índice <code>i</code> lleva el <strong>último índice válido</strong> (inicia en <code>-1</code>).</li>
+</ul>
+<h3 id="d-maquina-de-estados-modos">d) Máquina de estados (modos)</h3>
+<p><strong>Modo 0 – Escritura (<code>programa == 0</code>)</strong>
+- Comando de entrada: <code>Escribir,</code> (admite variantes de mayúsculas/minúsculas).
+- Luego, números separados por <strong>comas</strong> y terminados con <code>;</code> o <strong>Enter</strong>.
+- Cada número se <strong>valida (0–180)</strong> antes de guardarse; si es inválido, se descarta y se ajusta <code>i</code>.
+- <code>Borrar;</code> limpia la lista (rellena con <code>720</code>).</p>
+<p><strong>Modo 1 – Lectura</strong>
+- Recorre automáticamente los elementos <strong>válidos</strong> de <code>lista</code> y mueve el servo; pausa de <strong>1.5 s</strong> entre pasos.</p>
+<p><strong>Modo 2 – Navegación</strong>
+- Avance/retroceso manual con <strong><code>btn_next</code></strong> y <strong><code>btn_prev</code></strong> usando <strong>detección de flanco</strong> (variables <code>next1</code>/<code>prev1</code>).
+- Muestra <strong>posición</strong> y <strong>valor</strong>, aplica el ángulo al servo y espera <strong>200 ms</strong>.</p>
+<h2 id="6-video-demostracion">6) Video Demostracion:</h2>
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+  <iframe
+    src="https://www.youtube.com/embed/-4OjMs1xZ-A"
+    title="YouTube Short"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;">
+  </iframe>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

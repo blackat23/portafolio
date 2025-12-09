@@ -43,6 +43,7 @@ nav:
   - Ejemplo: ejemplo.md
   #- Comandos Basicos: comandos.md
   #- git: gitcmds.md
+  - Laberinto : laberinto.md
   - microcontroladores: controladores.md
   - Proyecto rana: rana.md
   - Análisis sobre las cafeteras de cápsulas: analisis_cafeteras.md
